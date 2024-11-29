@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payment</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delivery_truck_speed" />
+    <link rel="stylesheet" href="asset/css/style-thanhtoan.css">
+</head>
+<body>
+    <div>
+        <!-- div logo -->
+        <div class="box-logo">
+            <button class="return"><span class="material-icons"  >home</span></button>
+            <h1 class="logo">CHANG</h1>
+        </div>
+        <!-- div main -->
+        <div>     
+            <div class="cart">
+            <p class="cart-title">GIỎ HÀNG CỦA BẠN</p> 
+            <div class="box-sp">
+                <ul class="cartContainer">
+                    <!-- <li>
+                        <b>Sản phẩm</b>
+                        <div><img class="img-sp" src="dean5.png"></div>
+                        <div class="name-sp">Quần baggy</div>
+                        <div><p class="price-sp">299.000$</p></div>
+                        <div><p class="quantity-sp">Số lượng:</p></div>
+                        <div><input type="text" id="voucher-code" placeholder="Nhập mã voucher">
+                            <button class="apply-voucher-btn" onclick="applyVoucher()">Áp dụng</button></div>
+                        <div><p class="total-sp"><h1>Tổng tiền:</h1></p></div>
+                    </li>             -->
+                </ul>
+             </div>
+             <div class="total-sp"></div>
+        </div>
+            <div class="address">
+                <div>
+                    <span class="material-symbols-outlined">delivery_truck_speed</span>
+                     <p class="address-title">GIAO HÀNG TẬN NƠI</p> 
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Họ và tên <span class="required">(*)</span></label>
+                    <input type="text" id="fullname">
+                </div>
+                <div class="form-group">
+                    <label for="phonenumber">Số điện thoại <span class="required">(*)</span></label>
+                    <input type="text" id="phonenumber">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email">
+                </div>
+                <!-- ***************** -->
+                <div  class="form-group">
+                    <label for="city">Tỉnh / Thành Phố <span class="required">(*)</span></label>
+                    <select id="city" required>
+                        <option value="">Chọn Tình / Thành Phố</option>
+                    </select>
+                </div>
+                <div  class="form-group">
+                    <label for="district">Quận / Huyện <span class="required">(*)</span></label>
+                    <select id="district" required>
+                        <option value="">Chọn Quận / Huyện</option>
+                    </select>
+                </div>
+                <div  class="form-group">
+                    <label for="ward">Phường / Xã <span class="required">(*)</span></label>
+                    <select id="ward" required>
+                        <option value="">Chọn Phường / Xã</option>
+                    </select>
+                </div>
+                <!-- ********************** -->
+                <div class="form-group">
+                    <label for="address">Số nhà / Tên đường <span class="required">(*)</span></label>
+                    <input type="text" id="address">
+                </div>
+                <div>
+                    <label class="custom-checkbox">
+                      <input type="checkbox" value="home" />
+                      <span class="checkmark"></span>
+                      <p class="checkbox-text">Sử dụng thông tin này để mua hàng tại<p class="logo-rep">CHANG</p></p>
+                    </label>
+                 </div>
+                 <div class="form-group">
+                    <label for="pttt">Phương thức thanh toán<span class="required">(*)</span></label>
+                    <select id="pttt" required>
+                        <option value=""></option>
+                        <option value="1">Thanh toán khi nhận hàng</option>
+                        <option value="2">Thẻ ATM/Internet banking</option>
+                        <option value="3">Thanh toán bằng thẻ tín dụng</option>
+                        <option value="4">Thanh toán bằng mã QR</option>
+                        <option value="5">Thanh toán bằng ví MoMo</option>
+                    </select>
+                </div>
+                <div class="agreement">
+                    <label class="custom-checkbox">
+                      <input type="checkbox" id="agree"/>
+                      <span class="checkmark"></span>
+                      <p class="checkbox-agree">Tôi đồng ý  <p class="underline-text"> thoả thuận bảo mật và chính sách mua hàng</p></p>
+                    </label>
+                </div>
+                <div class="note">
+                    <strong>"Lưu ý:Changtrais chỉ giao hàng đối với các địa chỉ giao hàng có khoảng cách ít hơn hoặc bằng 500km tính từ trung tâm tiếp nhận đơn hàng và đáp ứng đủ điều kiện vận chuyển của Changtrais. Trường hợp sản phẩm bạn chọn không có sẵn hàng tại khu vực gần bạn, việc giao hàng sẽ được thực hiện bởi đối tác của chúng tôi và không hỗ trợ lắp đặt (nếu có)."</strong>
+                </div>
+                <div>
+                    <button class="btn-payment">THANH TOÁN</button>
+                </div>
+            </div>
+            <!-- div giỏ hàng -->
+           
+        </div>
+    </div>
+    <script src="asset/js/js-thanhtoan.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="asset/js/address.js"></script>
+</body>
+</html>

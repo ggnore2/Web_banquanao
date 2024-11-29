@@ -1,0 +1,905 @@
+:root{
+    --sideBar-bg-color: #FEFFFF;
+    --Content-bg-color: #17252A;
+    --top-height: 70px;
+}
+#searchBar{ 
+    padding: 5px;
+    width: 80%;
+    font-size: 16px;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.show{
+    display: block;
+}
+a{
+    text-decoration: none;
+    color: unset;
+}
+.Admin{
+    height: 100vh;
+    width: 100%;
+}
+.row-grid{
+    width: 100%;
+    display: grid;
+    justify-content: space-between;
+}
+span{
+    position: relative;
+    right: 0;
+}
+li{
+    list-style: none;
+}
+.error{
+    border: 2px solid red;
+}
+.MainBtn{
+    padding: 6px 12px;
+    background-color: #2B7A78;
+    color:white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 12px;
+}
+.MainBtn:hover{
+    background-color: hsl(178, 48%, 50%);
+}
+/* Page Nav  */
+
+
+
+/* main admin*/
+.Admin .row-grid{
+    grid-template-columns: 20% 80%;
+    /* grid-template-areas: 
+        "sidebar content content"
+        "sidebar content content"
+        "sidebar content content"
+        "sidebar content content"
+    ; */
+}
+
+
+/* side bar */
+.menuItems li{
+    cursor: pointer;
+}
+.Admin-sideBar{
+    background-color: var(--sideBar-bg-color);
+    /* grid-area: sidebar; */
+}
+.Admin-sideBar-Top-Title{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color:#17252A;
+    cursor: pointer;
+}
+.Admin-sideBar-Top-Title::after{
+    content: "TRAIS";
+    font-weight: 800;
+    font-size: 1.8rem;
+    color:#3AAFA9;
+    cursor: pointer;
+}
+
+.Admin-sideBar-Top{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: var(--top-height);
+    border-bottom: 1px solid grey;
+    font-family:Impact, sans-serif;
+    text-shadow: 2px 2px 2px hsl(0, 0%, 50%);
+}
+.Admin-sideBar-Top img{
+    width: 70px;
+}
+.Admin-sideBar-Content{
+    display:flex;
+    flex-direction: column;
+    height:40vh;
+    position: relative;
+    top:1rem; 
+}
+.Admin-sideBar-Content ul li {
+    padding: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    min-width: 20px;
+    transition: background-color 0.5s ease;
+}
+.Admin-sideBar-Content > ul > li > a{
+    display:flex;
+    color:#9faaad;
+    margin-left:2rem;
+    gap:1.5rem;
+    align-items:center;
+    height:3.2rem;
+    transition: all .1s ease-in;
+}
+.Admin-sideBar-Content a.active{
+    color:#17252A;
+    margin-left: 0px;
+    font-size: 1.3rem;
+}
+.Admin-sideBar-Content > ul > li > a span{
+    font-size:1.6rem;
+    transition: all .1s ease-in;
+}
+.Admin-sideBar-Content > ul > li > a:hover{
+    color:#17252A;
+}
+.Admin-sideBar-Content > ul > li > a i:last-child{
+    margin-left: auto;
+}
+.Admin-sideBar-Content ul li a i{
+    margin-right: 2px;
+}
+.Admin-sideBar:before {
+    content: ''; /* Tạo border bằng pseudo-element */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 5px;
+    background-color: #206e6a; /* Màu của border */
+    box-shadow: 0 0 20px #3AAFA9; /* Bóng cho border */
+}
+
+.sub-menu{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    
+}
+
+/* .sub-menu.Active{
+    height: 71px;
+} */
+.sub-menu li{
+    margin-top: 5px;
+    border-bottom: 1px solid black;
+}
+
+/* Nội dung dashboard*/ 
+.searchBar{
+    border-radius:13px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 500;
+}
+.Admin-Content-Main-Content-dashBoard{
+    width: 100%;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+.card1 , .card2 , .card3 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.card1{
+    border: solid #feffff;
+    width:25%;
+    height: 450px;
+    text-align: center;
+    /* margin-left: 110px; */
+    border-radius:20px ;
+    background-color: #feffff;
+    box-shadow:2px 2px 8px;
+    margin-top:30px;
+}
+.card1:hover{
+    background-color: goldenrod;
+    transform:scale(1.05);
+    transition:0.5s;
+    
+}
+.card2{
+    border: solid #feffff;
+    width:25%;
+    height: 450px;
+    text-align: center;
+    /* margin-left: 80px; */
+    border-radius:20px;
+    background-color: #feffff;
+    box-shadow:2px 2px 8px;
+    margin-top:30px;
+}
+.card2:hover{
+    background-color: goldenrod;
+    transform:scale(1.05);
+    transition:0.5s;
+    
+}
+.card3{
+    border: solid #feffff;
+    width:25%;
+    height: 450px;
+    text-align: center;
+    /* margin-left: 80px; */
+    border-radius:20px ;
+    background-color: #feffff;
+    box-shadow:2px 2px 8px;
+    margin-top:30px;
+}
+.card3:hover{
+    background-color: goldenrod;
+    transform:scale(1.05);
+    transition:0.5s;
+    
+}
+.card1-img{
+    width:100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+.card2-img{
+    width:100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+.card3-img{
+    width:100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+.card1-title{
+    margin-top: 10px;
+    font-size: 25px;
+    text-align: center;
+    font-weight: 700;
+
+}
+.card2-title{
+    margin-top: 10px;
+    font-size: 25px;
+    text-align: center;
+    font-weight: 700;
+}
+.card3-title{
+    margin-top: 10px;
+    font-size: 25px;
+    text-align: center;
+    font-weight: 700;
+}
+.card-content{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    display:flex;
+}
+.material-icons{
+    position: relative; 
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+.numAmount{
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: monospace;
+}
+/* Content*/
+.Admin-Content{
+    height: 100vh;
+    background-color: var(--Content-bg-color);
+    overflow: hidden;
+    /* grid-area: content; */
+}
+.Admin-Content-Top{
+    display: flex;
+    height: var(--top-height);
+    border-bottom: 1px solid black;
+    padding: 0 20px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.Admin-Content-Top i{
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+.Admin-Content-Top div > ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Admin-Content-Top div:last-child{
+    margin-left: auto;
+}
+.Admin-Content-Top ul li{
+    padding-left: 10px;
+}
+.Admin-Content-Top-Right img{
+    width: 40px;
+    border-radius: 25px;
+    border: 2px solid black;
+}
+.Admin-Content-Top-Right > ul > li p{
+    color: white;
+    padding-left: 6px;
+}
+.Admin-Content-Top-Right > ul li:last-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Admin-Content-Main-Title h1{
+    padding: 15px;
+    font-weight: 700;
+    color: rgb(109, 212, 190);
+    position: relative;
+}
+.Admin-Content-Main-Title h1::before{
+    position: absolute;
+    content: "";
+    display: block;
+    height: 4px;
+    width: 80px;
+    bottom: 6px;
+    left: 12px;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+/* thêm sản phẩm*/
+.Admin-Content-Main-Content{
+    /* display: flow-root;
+    display: flex;
+    flex-wrap: wrap; */
+    padding: 10px 15px;
+    width: 100%;
+    max-width: 650px;
+}
+.Admin-Content-Main-Content form .dataImgProduct ,.Admin-Content-Main-Content form .dataFixImgProduct{
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+.formGroup{
+    display: flex;
+    flex-wrap: wrap;
+    width:50%;
+    padding-bottom: 15px;
+}
+.formGroup:nth-child(2n){
+    justify-content: end;
+}
+.dataProducts .formGroup .errorMessage{
+    font-size: 1rem;
+    color: red;
+    font-weight: bold;
+}
+.Admin-Content-Main-Content form .dataImgProduct label ,.mainBtn , .updateBtn, .Admin-Content-Main-Content form .dataFixImgProduct label{
+    background-color: #3AAFA9;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-right:110px;
+    cursor: pointer;
+    text-align: center;
+    padding: 5px 7px;
+    border-radius: 5px;
+    transition: background-color 0.5s ease;
+}
+.Admin-Content-Main-Content form .dataImgProduct label:hover,.Admin-Content-Main-Content form .dataFixImgProduct label:hover{
+    background-color: hsl(177, 50%, 60%);
+}
+.Admin-Content-Main-Content  .dataImgProduct .imgContainer, .Admin-Content-Main-Content form .dataFixImgProduct .imgContainer{
+    width: 150px;
+    height: 150px;
+    margin-right:110px;
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+.dataProducts{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+.Admin-Content-Main-Content form .dataImgProduct .imgContainer i,.Admin-Content-Main-Content form .dataFixImgProduct .imgContainer i{
+    font-size: 5rem;
+}
+.Admin-Content-Main-Content form .dataProducts{
+    min-width: 300px;
+    margin-right: 20px;
+}
+.Admin-Content-Main-Content form .dataProducts input{
+    /* margin-top: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 35px;
+    font-size: 1rem;
+    font-weight: bold;
+    outline: none; */
+    font-size: 1rem;
+    height: 40px;
+    width: 95%;
+    border-radius: 7px;
+    outline: none;
+    border-radius: 1px solid grey;
+    padding: 0 10px;
+}
+#myForm,#myForm2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.addingForm,.FixingForm{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+/* Danh Sách Sản Phẩm*/
+.Admin-Content-Main{
+    display: flow-root;
+    display: none;
+}
+.Admin-Content-Main.Active{
+    display: block;
+}
+.Admin-Content-Main-Content-List{
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Admin-Content-Main-Content-List table{
+    width: auto;
+    margin-top: 2px;
+    background-color: #3AAFA9;
+    text-align: center;
+    max-height: 70vh;
+    display: flow-root;
+    overflow: auto;
+    border-radius: 10px;
+}
+
+.Admin-Content-Main-Content-List table::-webkit-scrollbar{
+    border-radius: 5rem;
+    background-color: #0004;  
+    visibility: hidden;
+}
+.Admin-Content-Main-Content-List table:hover::-webkit-scrollbar{
+    visibility: visible;
+}
+.Admin-Content-Main-Content-List table thead th{
+    background-color: hsl(0, 0%, 10%);
+    color: white;
+}
+.Admin-Content-Main-Content-List table thead th , .Admin-Content-Main-Content-ProList table tbody td{
+    margin: 10px;
+    padding: 5px 15px;
+}
+.Admin-Content-Main-Content-List table tr:nth-of-type(even){
+    background-color: hsl(177, 50%, 60%);
+}
+.Admin-Content-Main-Content-List  table , th , td {
+    border-collapse: collapse;
+}
+.Admin-Content-Main-Content-List table tbody a{
+    display: inline-block;   
+    padding: 3px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 500;
+    color: white;
+}
+.Fix{
+    background-color: hsl(120, 100%, 30%);
+    padding: 3px 5px;
+    border-radius: 5px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+}
+.Delete ,.nonConfirmOrder,.Remove{
+    background-color: tomato;
+    padding: 3px 5px;
+    border-radius: 5px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+}
+.Admin-Content-Main-Content-List table thead th:not(:first-child){
+    border-left: 1px solid black;
+}
+
+/* Danh Sách Đơn Hàng*/
+.Details ,.confirmOrder{
+    display: inline-block;   
+    padding: 3px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: hsl(120, 100%, 30%);
+    font-weight: bold;
+    color:white;
+}
+/* Chi tiết đơn hàng*/
+.totalDisplay{
+   font-size: 1.2rem; 
+   font-weight: bold;
+   color: gold;
+}
+/* phân trang */
+#paginationControls{ 
+    display: flex;
+    justify-content: center; 
+    gap: 5px;
+} 
+
+.paginationButton{
+    font-weight: bold;
+    padding: 3px 8px; 
+    border: 2px solid black; 
+    cursor: pointer;
+    color: black;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.paginationButtonActive{
+    color:black;
+    background-color: hsl(122, 85%, 50%);
+}
+
+ @media only screen and (max-width: 1200px) {
+    body{
+        
+        display: flow-root;
+    }
+    .dashBoard{
+        height: 110vh;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .Admin-Content-Main{
+        display: flow-root;
+        display: none;
+    }
+    .Admin-Content-Main.Active{
+        display: block;
+    }
+    .card1{
+        border: solid #feffff;
+        width:25%;
+        height: 440px;
+        text-align: center;
+        float:left;
+        margin-left: 10px;
+        border-radius:20px ;
+        background-color: #feffff;
+        box-shadow:2px 2px 8px;
+        margin-top:30px;
+    }
+    .card2{
+        border: solid #feffff;
+        width:25%;
+        height: 440px;
+        text-align: center;
+        float:left;
+        margin-left: 50px;
+        border-radius:20px ;
+        background-color: #feffff;
+        box-shadow:2px 2px 8px;
+        margin-top:30px;
+    }
+    .card3{
+        border: solid #feffff;
+        width:25%;
+        height: 440px;
+        text-align: center;
+        float:left;
+        margin-left: 50px;
+        border-radius:20px ;
+        background-color: #feffff;
+        box-shadow:2px 2px 8px;
+        margin-top:30px;
+    }
+    .amount-user{
+        margin-left:190px;
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .amount-product{
+        margin-left:190px;
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .doanh-thu{
+        margin-left:90px;
+        font-size: 30px;
+        font-weight: 700;
+    }
+ 
+}
+
+@media only screen and (max-width: 786px) {
+    body{
+        display: flow-root;
+    }
+    .Admin-sideBar{
+        height: 420px;
+    }
+    .addingForm{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 auto;
+    }
+    .Admin-Content{
+        max-height: 80vh;
+    }
+    .Admin-Content-Main-Content form .dataImgProduct .imgContainer{
+        display: none;
+    }
+    .dataProducts{
+        margin-left:40px;
+        padding-top: 50px;
+    }
+    .dataImgProduct{
+        margin-left: 150px;
+    }
+    .mainBtn,.updateBtn{
+        margin-left: 150px;
+    }
+    .Admin-Content-Main-Content{
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        display: flow-root;
+    }
+    .Admin-Content-Main{
+        min-width: 300px;
+        display: flow-root;
+        display: none;
+    }
+    .Admin-Content-Main.Active{
+        display: block;
+    }
+    .formGroup input{
+        width: 100%;
+    }
+    .Admin .row-grid{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .dashBoard{
+        display: flow-root;
+        overflow: scroll;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .card1-title{
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .card2-title{
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .card3-title{
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .card1{
+        border: solid #feffff;
+        width:25%;
+        height: 430px;
+        text-align: center;
+        float:left;
+        margin-left: 10px;
+        border-radius:20px ;
+        background-color: #feffff;
+        box-shadow:2px 2px 8px;
+        margin-top:30px;
+    }
+    .card2{
+        border: solid #feffff;
+        width:25%;
+        height: 430px;
+        text-align: center;
+        float:left;
+        margin-left: 30px;
+        border-radius:20px ;
+        background-color: #feffff;
+        box-shadow:2px 2px 8px;
+        margin-top:30px;
+    }
+    .card3{
+        border: solid #feffff;
+        width:25%;
+        height: 430px;
+        text-align: center;
+        float:left;
+        margin-left: 30px;
+        border-radius:20px ;
+        background-color: #feffff;
+        box-shadow:2px 2px 8px;
+        margin-top:30px;
+    }
+    .amount-user{
+        margin-left:190px;
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .amount-product{
+        margin-left:190px;
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .doanh-thu{
+        margin-left:90px;
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .Admin-Content-Main-Content-dashBoard{
+        padding-top: 50px;
+    }
+    .Admin-Content-Main-Content-List table{
+        width: auto;
+        margin-top: 2px;
+        background-color: #3AAFA9;
+        text-align: center;
+        max-height: 50vh;
+        display: flow-root;
+        overflow: auto;
+        border-radius: 10px;
+    }
+    
+    .Admin-Content-Main-Content-List table::-webkit-scrollbar{
+        border-radius: 5rem;
+        background-color: #0004;  
+        visibility: hidden;
+    }
+    .Admin-Content-Main-Content-List table:hover::-webkit-scrollbar{
+        visibility: visible;
+    }
+    .dataProducts{
+        height: 200px;
+        overflow: auto;
+    }
+    .dataProducts::-webkit-scrollbar{
+        border-radius: 5rem;
+        background-color: #0004;
+        visibility: hidden;
+    }
+    .dataProducts:hover::-webkit-scrollbar{
+        visibility: visible;
+    }
+}
+
+@media only screen and (max-width: 615px) {
+    body{
+        display: flow-root;
+    }
+    .Admin-sideBar{
+        height: 420px;
+    }
+    .Admin-Content-Main{
+        display: flow-root;
+        display: none;
+    }
+    .Admin-Content-Main.Active{
+        display: block;
+    }
+    .Admin-Content-Main-Content-List table{
+        width: auto;
+        margin-top: 2px;
+        background-color: #3AAFA9;
+        text-align: center;
+        max-height: 50vh;
+        display: flow-root;
+        overflow: auto;
+        border-radius: 10px;
+    }
+    
+    .Admin-Content-Main-Content-List table::-webkit-scrollbar{
+        border-radius: 5rem;
+        background-color: #0004;  
+        visibility: hidden;
+    }
+    .Admin-Content-Main-Content-List table:hover::-webkit-scrollbar{
+        visibility: visible;
+    }
+    .dataProducts{
+        width: auto;
+        height: 200px;
+        overflow: auto;
+    }
+    .dataProducts::-webkit-scrollbar{
+        border-radius: 5rem;
+        background-color: #0004;
+        visibility: hidden;
+    }
+    .dataProducts:hover::-webkit-scrollbar{
+        visibility: visible;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    body{
+        display: flow-root;
+    }
+    .Admin-sideBar{
+        height: 420px;
+    }
+    .Admin-Content-Main{
+        display: flow-root;
+        height:50px;
+        display: none;
+        
+    }
+    .Admin-Content-Main.Active{
+        display: block;
+    }
+    .Admin-Content-Main-Content-List table{
+        width: auto;
+        margin-top: 2px;
+        background-color: #3AAFA9;
+        text-align: center;
+        max-height: 50vh;
+        display: flow-root;
+        overflow: auto;
+        border-radius: 10px;
+    }
+    .Admin-Content-Main-Content-List table::-webkit-scrollbar{
+        border-radius: 5rem;
+        background-color: #0004;  
+        visibility: hidden;
+    }
+    .Admin-Content-Main-Content-List table:hover::-webkit-scrollbar{
+        visibility: visible;
+    }
+
+    .dataProducts{
+        height: 200px;
+        overflow: auto;
+    }
+    .dataProducts::-webkit-scrollbar{
+        border-radius: 5rem;
+        background-color: #0004;
+        visibility: hidden;
+    }
+    .dataProducts:hover::-webkit-scrollbar{
+        visibility: visible;
+    }
+}     

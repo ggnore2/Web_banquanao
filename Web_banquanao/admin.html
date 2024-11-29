@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="asset\css\style.css">
+</head>
+<body>
+    <section class="Admin">
+        <div class="row-grid">
+
+            <div class="Admin-sideBar">
+
+                <div class="Admin-sideBar-Top">
+                    <h1 class="Admin-sideBar-Top-Title">CHANG</h1>
+                   <!-- <img src="asset/images/Apple-removebg-preview.png" alt="Logo"> -->
+                </div>
+
+                <div class="Admin-sideBar-Content">
+                    <ul>
+                        <li><a href=""class="active"><span class="material-icons"  >home</span>Dashboard<i class="ri-add-box-fill"></i></a>
+                            <ul class="sub-menu">
+                                <div class="menuItems">
+                                    <li><a href=""><i class="ri-arrow-drop-right-line"></i>Tổng Quan</a></li>
+                                </div>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href=""><span class="material-icons">group</span>Customer Account<i class="ri-add-box-fill"></i></a>
+                            <ul class="sub-menu">
+                                <div class="menuItems">
+                                    <li><a href=""><i class="ri-arrow-drop-right-line"></i>Danh Sách Khách Hàng</a></li>
+                                </div>
+                            </ul>
+                        </li>
+                        <li><a href=""><span class="material-icons">shopping_cart</span>Đơn Hàng<i class="ri-add-box-fill"></i></a>
+                            <ul class="sub-menu">
+                                <div class="menuItems">
+                                    <li><a href=""><i class="ri-arrow-drop-right-line"></i>Danh Sách</a></li>
+                                </div>
+                            </ul>
+                        </li>
+                        <li><a href=""><span class="material-icons">inventory_2</span>Sản Phẩm<i class="ri-add-box-fill"></i></a>
+                            <ul class="sub-menu">
+                                <div class="menuItems">
+                                    <li ><a href=""><i class="ri-arrow-drop-right-line"></i>Danh Sách</a></li>
+                                    <li ><a href=""><i class="ri-arrow-drop-right-line"></i>Thêm</a></li>
+                                </div>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="Admin-Content">
+                <div class="Admin-Content-Top">
+                    <div class="Admin-Content-Top-Left">
+                        <ul>
+                            <li>
+                                <label for="searchBar"><i class="ri-search-line"></i></label>
+                                <input type="text" class="searchBar" id="searchBar" placeholder="Search for products...">
+                            </li>                                                    
+                        </ul>
+                    </div>
+                    <div class="Admin-Content-Top-Right">
+                        <ul>                      
+                            <li><img src="asset/image/z5982018784254_ed4e276c21a1179c4240a61c706bb6c9.jpg" 
+                                alt="cuteCat">
+                                <p>VinhThai<i class="ri-arrow-down-s-fill"></i></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- dashboard -->
+                <div class="Admin-Content-Main Active">
+                    <div class="Admin-Content-Main-Title"><h1>Dashboard</h1></div>
+                    <div class="Admin-Content-Main-Content-dashBoard">
+    
+                            <div class="card1">
+                                <p id="amount-user" class="numAmount">0</p>
+                                <div><img class="card1-img" src="asset/image/khachhangpr.png" alt=""></div>
+                                <div class="card1-title"><p>Khách hàng</p></div>
+                                                            </div>
+                            <div class="card2">
+                                <p id="amount-product" class="numAmount">0</p>
+                                <div><img class="card2-img" src="asset/image/sanphampr.png" alt=""></div>
+                                <div class="card1-title"><p>Sản phẩm</p></div>
+            
+                            </div>
+                            <div class="card3">
+                                <p id="doanh-thu" class="numAmount">$5020</p>
+                                <div><img class="card3-img" src="asset/image/doanhthupr.png" alt=""></div>
+                                <div class="card1-title"><p>Doanh thu</p></div>
+                               
+                            </div>
+                        
+                    </div>
+                </div>
+
+                <!-- danh sách tài khoản -->
+                <div class="Admin-Content-Main">
+                    <div class="Admin-Content-Main-Title"><h1>Danh Sách Tài Khoản</h1></div>
+                    <div class="Admin-Content-Main-Content-List">
+                        <table>
+                            <thead>
+                                <th>Loại Người Dùng</th>
+                                <!--Tên Khách hàng-->
+                                <th>Tên Khách Hàng</th>
+                                <!--Tên Tài Khoản-->
+                                <th>Mật Khẩu</th>
+                                <!--sdt-->
+                                <th>Số điện thoại</th>
+                                <!--Tùy Chỉnh-->
+                                <th>Tùy Chỉnh</th>                    
+                            </thead>
+                            <tbody class="accountTable">                          
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- danh sách đơn hàng  -->
+                <div class="Admin-Content-Main">
+                    <div class="Admin-Content-Main-Title"><h1>Danh Sách Đơn Hàng</h1></div>
+                    <div class="Admin-Content-Main-Content-List">
+                        <table>
+                            <thead>                             
+                                <th>ID Đơn Hàng</th>                                
+                                <th>ID Tài Khoản</th>                                
+                                <th>Chi Tiết</th>                                                                                      
+                                <th>Đánh Dấu</th>                                
+                                <th>Hủy Đơn</th>                    
+                            </thead>
+                            <tbody class="ordersTable">                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- danh sách sản phẩm  -->
+                <div class="Admin-Content-Main">
+                    <div class="Admin-Content-Main-Title"><h1>Danh Sách Sản Phẩm</h1></div>
+                    <div id="paginationControls"></div>                    
+                    <div class="Admin-Content-Main-Content-List">
+                        <table>
+                            <thead>
+                                <!--ID-->
+                                <th>ID</th>
+                                <!--Ảnh-->
+                                <th>Ảnh</th>
+                                <!--Tên Sản Phẩm-->
+                                <th style="width: 300px;">Tên Sản Phẩm</th>
+                                <!--Giá Bán-->
+                                <th>Giá</th>
+                                <!--Kích Cỡ-->
+                                <th>Kiểu Loại</th>
+                                <!--Tùy Chỉnh-->
+                                <th>Tùy Chỉnh</th>                    
+                            </thead>
+                            <tbody class="productsTable">                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- thêm sản phẩm -->
+                <div class="Admin-Content-Main" id="addingProduct">
+                    <div class="Admin-Content-Main-Title"><h1>Thêm Sản Phẩm</h1></div>
+                    <div class="Admin-Content-Main-Content">
+                        <form id="myForm" method="post" class="addingForm">
+                            <div class="dataProducts">
+
+                                <div class="formGroup">
+                                    <input type="text" name="name" class="ProductName" placeholder="Nhập Tên Sản Phẩm">
+                                    <div class="errorMessage"></div>
+                                </div><br>
+
+                                <div class="formGroup">
+                                    <input type="text" name="catagory" class="ProductType" placeholder="Nhập Loại Sản Phẩm"><br>
+                                    <div class="errorMessage"></div>
+                                </div><br>
+
+                                <div class="formGroup">
+                                    <input type="text" name="size" class="ProductSize" placeholder="Nhập Kích Cỡ"><br> 
+                                    <div class="errorMessage"></div>
+                                </div><br>
+
+                                <div class="formGroup">
+                                    <input type="text" name="price" class="ProductPrice" placeholder="Nhập Giá Bán"><br> 
+                                    <div class="errorMessage"></div>
+                                </div><br>
+                                
+                                <div>
+                                    <textarea id="description" name="desc" rows="4" cols="50" placeholder="Enter your description here..."></textarea><br>                               
+                                </div>
+                            </div>
+                            <div class="dataImgProduct">
+                                <label for="ProductImg">Ảnh sản phẩm</label><br>  
+                                <input type="file" name="image" id="ProductImg" style="display: none;">
+                            </div>
+                            <button type="submit" class="mainBtn" id="AddBtn">Thêm sản phẩm</button>
+                        </form>                            
+                    </div>
+                </div>
+        
+            
+                <!-- sửa sản phẩm -->
+                <div class="Admin-Content-Main" id="fixingProduct">
+                    <div class="Admin-Content-Main-Title"><h1>Chỉnh sửa Sản Phẩm</h1></div>
+                    <div class="Admin-Content-Main-Content">
+                        <form id="myForm2" method="post" class="FixingForm">
+                            <div class="dataProducts">
+
+                                <div class="formGroup">
+                                    <input type="text" name="name" class="ProductName" placeholder="Nhập Tên Sản Phẩm">
+                                    <div class="errorMessage"></div>
+                                </div><br>
+
+                                <div class="formGroup">
+                                    <input type="text" name="catagory" class="ProductType" placeholder="Nhập Loại Sản Phẩm"><br>
+                                    <div class="errorMessage"></div>
+                                </div><br>
+
+                                <div class="formGroup">
+                                    <input type="text" name="size" class="ProductSize" placeholder="Nhập Kích Cỡ"><br> 
+                                    <div class="errorMessage"></div>
+                                </div><br>
+
+                                <div class="formGroup">
+                                    <input type="text" name="price" class="ProductPrice" placeholder="Nhập Giá Bán"><br> 
+                                    <div class="errorMessage"></div>
+                                </div><br>
+                            </div>
+                            <div class="dataImgProduct">
+                                <label for="ProductFixImg">Ảnh sản phẩm</label><br>  
+                                <input type="file" name="ProductImg" id="ProductFixImg" style="display: none;">
+                            </div>
+                            <button type="submit" class="updateBtn">Cập nhật sản phẩm</button>
+                        </form>                            
+                    </div>
+                </div>
+
+                <!-- chi tiết đơn hàng  -->
+                <div class="Admin-Content-Main">
+                    <div class="Admin-Content-Main-Title">
+                        <h1 style="max-width: 500px;">Chi Tiết Đơn Hàng</h1>
+                        <button class="returnPage" style="font-weight: bold; padding: 0; cursor: pointer; border-radius: 15px;"><span class="material-icons"  >arrow_back</span></button>
+                    </div>
+                    <div class="Admin-Content-Main-Content-List">
+                        <table>
+                            <thead>
+                                <!--ID-->
+                                <th>ID</th>
+                                <!--Ảnh-->
+                                <th>Ảnh</th>
+                                <!--Tên Sản Phẩm-->
+                                <th style="width: 300px;">Tên Sản Phẩm</th>
+                                <!--Giá Bán-->
+                                <th>Giá</th>
+                                <!--Kích Cỡ-->
+                                <th>Kiểu Loại</th>
+                                <!--So luong-->
+                                <th>Số Lượng</th>
+                                <!--Thành Tiền-->
+                                <th>Thành Tiền</th>                    
+                            </thead>
+                            <tbody class="detailsTable">                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>       
+            </div>
+        </div>
+    </section>
+    <script src="asset\js\script.js"></script>
+    <script src="asset/js/initialization.js"></script>
+</body>
+</html>

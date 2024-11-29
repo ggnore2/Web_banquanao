@@ -1,0 +1,620 @@
+@media (max-width: 1248px) {
+    .product-detail-tab {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        /* Dim background */
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Tab content */
+    .product-detail-content {
+        background: white;
+        border-radius: 10px;
+        max-width: 2000px;
+        width: 100%;
+
+        padding: 20px;
+        position: relative;
+    }
+
+    /* Close button */
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        color: #555;
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+
+    /* Layout for image and info */
+    .product-detail-layout {
+        display: flex;
+        gap: 20px;
+    }
+
+    /* Left column: Image */
+    .product-image {
+        flex: 1;
+        /* Ensure it takes up one part of the space */
+        display: flex;
+        /* Use flexbox for centering */
+        justify-content: center;
+        /* Horizontally center the image */
+        align-items: center;
+        /* Vertically center the image */
+
+    }
+
+    .product-image img {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Right column: Info */
+    .product-info {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        gap: 30px;
+
+
+    }
+
+    .product-info h2 {
+        font-size: 19px;
+        margin: 30px 0px;
+        margin-left: 2px;
+        position: absolute;
+        width: 48%;
+        float: left;
+    }
+
+
+
+    .product-info h3 {
+        font-size: 10px;
+        margin-top: 30px;
+        position: absolute;
+        border-bottom: var(--red) 1px solid;
+        width: 60%;
+
+
+    }
+
+    .product-info p {
+        margin-top: 30px;
+        width: 80%;
+        font-size: 12px;
+    }
+}
+
+
+
+
+@media (max-width: 991.98px) {
+    .footer-top-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-top-img {
+        margin-bottom: 20px;
+        border: none;
+    }
+
+    .footer-top-subs-text {
+        display: none;
+    }
+
+    .widget-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0 15px;
+    }
+
+    .widget-row-col-1 {
+        width: 100%;
+        padding-bottom: 20px;
+    }
+
+    .widget-row-col {
+        width: 50%;
+        padding-bottom: 20px;
+    }
+
+    .cart-tab {
+        top: 40px;
+        right: -500px;
+        width: 400px;
+        height: calc(100% - 70px);
+    }
+
+    .listProduct {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+
+    .product-detail-tab {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        /* Dim background */
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Tab content */
+    .product-detail-content {
+        background: white;
+        border-radius: 10px;
+        max-width: 2000px;
+        width: 100%;
+        padding: 20px;
+        position: relative;
+    }
+
+    /* Close button */
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        color: #555;
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+
+    /* Layout for image and info */
+    .product-detail-layout {
+        display: flex;
+        gap: 20px;
+    }
+
+    /* Left column: Image */
+    .product-image {
+        flex: 3;
+        /* Ensure it takes up one part of the space */
+        display: flex;
+        /* Use flexbox for centering */
+        justify-content: center;
+        /* Horizontally center the image */
+        align-items: center;
+        /* Vertically center the image */
+
+    }
+
+    .product-image img {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Right column: Info */
+    .product-info {
+        flex: 4;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        gap: 30px;
+
+
+    }
+
+    .product-info h2 {
+        font-size: 19px;
+        margin: 30px 0px;
+        margin-left: 2px;
+        position: absolute;
+        width: 48%;
+        float: left;
+    }
+
+
+
+    .product-info h3 {
+        font-size: 10px;
+        margin-top: 30px;
+        position: absolute;
+        border-bottom: var(--red) 1px solid;
+        width: 60%;
+
+
+    }
+
+    .product-info p {
+        margin-top: 30px;
+        width: 80%;
+        font-size: 12px;
+    }
+
+
+
+
+    .size-options label {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 13px;
+    }
+
+    .size-btn {
+        background: #ddd;
+        color: black;
+        border: none;
+        padding: 5px 10px;
+        margin-right: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+
+    }
+
+
+    .size-btn.selected {
+        background: var(--red);
+        color: white;
+        font-weight: bold;
+        border: 2px solid #d22;
+        transition: all 0.2s ease;
+    }
+
+    /* Quantity controls */
+    .quantity-controls {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .quantity-controls button {
+        background: var(--red);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .quantity-controls span {
+        background-color: rgb(231, 224, 224);
+        border: 1px solid rgb(231, 224, 224);
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    /* Textarea */
+    #product-note {
+        width: 100%;
+        height: 80px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        resize: vertical;
+    }
+
+    /* Buttons */
+    .product-detail-buttons button {
+        background: var(--red);
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+
+    }
+
+    .product-detail-buttons button:hover {
+        background: #d22;
+    }
+
+
+
+    .no-result {
+        width: 100%;
+        text-align: center;
+        margin: 5px 170px;
+        /*responsive*/
+    }
+
+
+    .menu-link::after {
+        content: "";
+        position: absolute;
+        height: 3px;
+        visibility: hidden;
+        transform: scale(0);
+        opacity: 0;
+        transition: visibility 0.3s, transform 0.3s, opacity 0.3s;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        background-color: var(--white);
+        transition: all 0.3s ease;
+    }
+
+    .category-menu::after {
+        content: "";
+        position: absolute;
+        height: 3px;
+        visibility: hidden;
+        transform: scale(0);
+        opacity: 0;
+        transition: visibility 0.3s, transform 0.4s, opacity 0.3s;
+        width: 60%;
+        left: 180px;
+        bottom: 0;
+        background-color: var(--white);
+        transition: all 0.3s ease;
+    }
+
+    #slideshow-wrapper {
+        max-width: 100%;
+        /* Fixed width */
+        height: 1000px;
+        /* Fixed height */
+        margin: 20px auto;
+        /* Center horizontally */
+        position: relative;
+        overflow: hidden;
+        /* Hide overflow for transitions */
+        background-color: #f3f3f3;
+        /* Optional background for better visibility */
+        border-radius: 10px;
+    }
+
+    /* Slideshow container */
+    .slideshow-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    /* Slides */
+    .slide {
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .slide img {
+        width: 100%;
+        /* Scale image to fit the width */
+        height: 100%;
+        /* Scale image to fit the height */
+        object-fit: cover;
+        /* Ensure images cover the container proportionally */
+    }
+
+
+    .text-dndk {
+        display: none;
+
+    }
+
+    .text-tk {
+        display: none;
+    }
+
+    .search-btn {
+        border: none;
+        outline: none;
+        font-size: 20px;
+        height: 40px;
+        padding: 0 20px;
+        color: black;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 828px) {
+    .menu-link::after {
+        content: "";
+        position: absolute;
+        height: 3px;
+        visibility: hidden;
+        transform: scale(0);
+        opacity: 0;
+        transition: visibility 0.3s, transform 0.3s, opacity 0.3s;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        background-color: var(--white);
+        transition: all 0.3s ease;
+    }
+
+    .category-menu::after {
+        content: "";
+        position: absolute;
+        height: 3px;
+        visibility: hidden;
+        transform: scale(0);
+        opacity: 0;
+        transition: visibility 0.3s, transform 0.4s, opacity 0.3s;
+        width: 69%;
+        left: 120px;
+        bottom: 0;
+        background-color: var(--white);
+        transition: all 0.3s ease;
+    }
+
+    #slideshow-wrapper {
+        max-width: 100%;
+        /* Fixed width */
+        height: 1000px;
+        /* Fixed height */
+        margin: 20px auto;
+        /* Center horizontally */
+        position: relative;
+        overflow: hidden;
+        /* Hide overflow for transitions */
+        background-color: #f3f3f3;
+        /* Optional background for better visibility */
+        border-radius: 10px;
+    }
+
+    /* Slideshow container */
+    .slideshow-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    /* Slides */
+    .slide {
+        display: none;
+        position: absolute;
+        width: 120%;
+        height: 100%;
+    }
+
+    .slide img {
+        width: 100%;
+        /* Scale image to fit the width */
+        height: 100%;
+        /* Scale image to fit the height */
+        object-fit: cover;
+        /* Ensure images cover the container proportionally */
+    }
+
+    .search-btn {
+        border: none;
+        outline: none;
+        font-size: 20px;
+        height: 40px;
+        padding: 0 20px;
+        color: black;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+    }
+
+    .category-menu ul {
+        margin-left: 20px;
+    }
+
+    .cart-tab {
+        top: 30px;
+        right: -500px;
+        width: 400px;
+        height: calc(100% - 50px);
+    }
+}
+
+
+@media (max-width: 785px) {
+    .menu-link::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .menu-link::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+    }
+
+    .menu-link::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .menu-link::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    .menu-link::after {
+
+        display: none;
+    }
+
+    .category-menu::after {
+        display: none;
+    }
+
+    .cart-tab {
+        position: fixed;
+        top: 50px;
+        right: -500px;
+        width: 400px;
+        height: calc(100% - 100px);
+        background-color: white;
+        color: black;
+        transition: right 0.3s ease;
+        border-radius: 20px;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Close button */
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        color: #555;
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .form-search-input {
+        width: 100%;
+        
+    }
+
+    .header-logo-img {
+        width: 100px;
+        margin-left: 10px;
+    }
+
+    .listProduct {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 15px;
+    }
+
+    .menu-link::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .menu-link::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+    }
+
+    .menu-link::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .menu-link::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+}

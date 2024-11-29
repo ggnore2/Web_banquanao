@@ -1,0 +1,479 @@
+
+.logo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    margin-right: 40px;
+    float: right;
+    font-weight: 800;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 2px hsl(0, 0%, 50%);
+    font-family:arial, sans-serif;
+    color:#17252A;
+}
+li{
+    list-style-type: none;
+}
+.logo::after{
+    content: "TRAIS";
+    font-weight: 800;
+    font-size: 1.8rem;
+    color:#247a76;
+}
+.button-return{
+    font-size: 20px;
+    font-weight: bold;
+}
+.return {
+    display: block;
+    width: 5%;
+    background: #3aafa9;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    float:left;
+}
+
+.return:hover {
+    color: #3a3131;
+}
+
+.return:active {
+    color: #8e0000;
+}
+.box-logo{
+    padding-top: 5px;
+    width:100%;
+    height: 80px;
+    text-align: center;
+    background-color:#3AAFA9;
+    box-shadow:2px 2px 8px;
+}
+.address{
+    margin-top:20px;
+    width:60%;
+    height: 1100px;
+
+}
+.address-title{
+    text-align: left;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color:#3AAFA9;
+    margin-left: 20px;
+}
+.address div {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 10px;
+    margin-left:50px;
+}
+
+.material-symbols-outlined {
+    font-size: 70px;
+    color: #3AAFA9;
+    margin-right: 50px; 
+}
+.address-title {
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: #3AAFA9;
+}
+.material-symbols-outlined{
+    font-size: 70px;
+    font-weight: 10px;
+    color:#3AAFA9;
+    float: left;
+    margin-left:100px;
+    vertical-align: middle;
+}
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    margin-bottom: 50px;
+    position: relative;
+    margin-left:10px;
+}
+.form-group .required {
+    color: red;
+    font-size: 12px;
+    margin-left: 5px;
+}
+.form-group select {
+    width: 95%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+.form-group input {
+    width: 95%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.form-group label {
+    position: absolute;
+    top: 2%;             
+    left: 12px;   
+    margin-bottom: 10px;
+    display: block;     
+    transform: translateY(-50%); 
+    background: white;      
+    padding: 0 10px;
+    color: #333;
+    font-size: 20px;
+    font-weight: 500;
+    pointer-events: none;  
+}
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+    top: -10px;
+    font-size: 12px;
+    color: #3AAFA9;
+}
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    font-size: 16px;
+    color: #333;
+    padding-left: 30px;
+}
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.custom-checkbox .checkmark {
+    position: absolute;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 4px;
+    border: 2px solid #ccc;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.custom-checkbox:hover .checkmark {
+    background-color: #f0f0f0;
+    border-color: #3AAFA9;
+}
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: #3AAFA9;
+    border-color: #3AAFA9;
+}
+.custom-checkbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+.checkbox-text{
+    color:#3AAFA9;
+    font-size: 30px;
+    font-weight: 800;
+}
+.logo-rep{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin-left: 10px;
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 2px hsl(0, 0%, 50%);
+    font-family:arial, sans-serif;
+    color:#17252A;
+}
+.logo-rep::after{
+    content: "TRAIS";
+    font-weight: 800;
+    font-size: 1.5rem;
+    color:#3AAFA9;
+}
+.agreement{
+    width: 91%;
+    padding-left: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+.checkbox-agree{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin-left: 10px;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color:#17252A;
+}
+.note{
+    width: 91%;
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+.underline-text {
+    text-decoration: underline;
+    font-size: 1.8rem;
+    color: #3AAFA9;
+}
+.underline-text:hover {
+    color: #3aafa9; 
+    margin-left: 10px;
+    font-size: 1.8rem;
+    
+}
+.btn-payment {
+    display: block;
+    width: 95%;
+    background: #d32f2f;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn-payment:hover {
+    background: #b71c1c;
+}
+
+.btn-payment:active {
+    background: #8e0000;
+}
+/*giỏ hàng */
+.cart-title{
+    font-size: 24px;
+    font-weight: bold;
+    color: #3AAFA9; /* Đảm bảo chữ được căn giữa theo chiều ngang */
+    margin-bottom: 15px;
+    width: 100%; /* Đảm bảo chiếm toàn bộ chiều ngang khung */
+}
+.cart{
+    width: 35%;
+    height: 900px;
+    position: fixed;
+    top: 100px;
+    right: 2px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    overflow: auto;
+}
+.box-sp{
+    
+    width: 100%;
+    height: auto;
+    border: 1px solid rgb(245, 238, 238);
+    margin-top: 10px;
+    border-radius: 20px;
+}
+.img-sp{
+    height:400px;
+}
+.name-sp{
+    font-weight: 500;
+    font-size:25px;
+    margin-left: 10px;
+}
+.price-sp{
+    font-weight: 500;
+    font-size:25px;
+    margin-left: 10px;
+}
+.quantity-sp{
+    font-weight: 500;
+    font-size:25px;
+    margin-left: 10px;
+}
+.apply-voucher-btn{
+
+    width: 100px;
+    background: #3aafa9;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top:20 px;
+
+}
+.apply-voucher-btn:hover {
+    background: #247a76;
+}
+.box-sp ul li input{
+    width: 400px;
+    height: 50px;
+    font-size: 18px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-radius:15px;
+}
+.total-sp{
+    margin-top: 20px;
+    font-size:20px;
+    font-weight: bold;
+    margin-bottom: 500px;
+}
+@media only screen and (max-width: 1200px) {
+
+}
+@media only screen and (max-width: 786px) {
+    .address{
+        margin-top:50px;
+        width:100%;
+        height: 1100px;
+        float:left;
+    }
+    .material-symbols-outlined{
+        margin-left: 35px;
+        margin-top: 80px;
+    }
+    .address-title{
+        text-align: left;
+        margin-top: 120px;
+        font-weight: 800;
+        font-size: 1.8rem;
+        color:#3AAFA9;
+        margin-left: 0px;
+    }
+    .address div {
+        display: flex;
+        align-items: center; 
+        margin-bottom: 10px;
+        margin-left:20px;
+    }    
+    .checkbox-text{
+        color:#3AAFA9;
+        font-size: 20px;
+        font-weight: 500;
+    }
+    .logo-rep{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        margin-left: 10px;
+        font-weight: 800;
+        font-size: 1.1rem;
+        text-shadow: 2px 2px 2px hsl(0, 0%, 50%);
+        font-family:arial, sans-serif;
+        color:#17252A;
+    }
+    .logo-rep::after{
+        content: "TRAIS";
+        font-weight: 800;
+        font-size: 1.1rem;
+        color:#3AAFA9;
+    }
+    .checkbox-agree{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        margin-left: 10px;
+        font-weight: 500;
+        font-size: 1.1rem;
+        color:#17252A;
+    }
+    .underline-text {
+        text-decoration: underline;
+        font-size: 1.1rem;
+        color: #3AAFA9;
+    }
+    .underline-text:hover {
+        color: #3aafa9; 
+        margin-left: 10px;
+        font-size: 1.1rem;
+        
+    }
+    .note{
+        width: 95%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+    .btn-payment {
+        display: block;
+        width: 98%;
+        background: #d32f2f;
+        color: white;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 15px 0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+    .btn-payment:hover {
+        background: #991717;
+    }
+    .btn-payment:active {
+        background: #551b1b;
+    }
+    .box-sp{
+        width: 99%;
+        height: 700px;
+        border: 1px solid rgb(245, 238, 238);
+    }
+      .address, .cart {
+        width: 100%;
+        margin: 0;
+        float: none;
+    }
+    .cart {
+        position: relative;
+        order: 1;
+        margin-bottom: 20px;
+        left:-20px;
+        top:5px;
+        height:860px;
+    }
+    .box-sp {
+        height: auto;
+    }
+    .form-group, .agreement, .note, .btn-payment {
+        order: 2; /* Đưa các phần còn lại xuống sau */
+    }
+    .cart-title{
+        text-align: center;
+    }
+}

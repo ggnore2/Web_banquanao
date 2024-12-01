@@ -545,6 +545,7 @@ function handleUpdate(event){
 }
 updateBtn.addEventListener("click",handleUpdate);
 
+
 // thanh tìm kiếm
 
 function handleFilterProducts(){

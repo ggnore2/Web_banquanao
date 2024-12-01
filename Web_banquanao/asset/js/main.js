@@ -69,7 +69,7 @@ function closeModal() {
     modalContainer.forEach(item => {
         item.classList.remove('open');
     });
-    console.log(modalContainer)
+    //console.log(modalContainer)
     body.style.overflow = "auto";
 }
 
@@ -340,12 +340,14 @@ function kiemtradangnhap() {
         let user = JSON.parse(currentUser);
         document.querySelector('.auth-container').innerHTML = `<span class="text-dndk">Tài khoản</span>
             <span class="text-tk" data-id="${user.id}" >${user.fullname} <i class="fa-sharp fa-solid fa-caret-down"></span>`
-        document.querySelector('.header-middle-right-menu').innerHTML = `<li><a href="javascript:;" onclick="myAccount()"><i class="fa-light fa-circle-user"></i> Tài khoản của tôi</a></li>
-            <li class="border"><a id="logout" href="javascript:;"><i class="fa-light fa-right-from-bracket"></i> Đăng xuất </a></li>`
-        document.querySelector('#logout').addEventListener('click', logOut)
+        document.querySelector('.header-middle-right-menu').innerHTML = `<li><a onclick="myAccount()"><i class="fa-light fa-circle-user"></i> Tài khoản của tôi</a></li>
+            <li class="border"><a class="logout"><i class="fa-light fa-right-from-bracket"></i> Đăng xuất </a></li>`
+        document.querySelector('.logout').addEventListener('click', logOut)
     }
 }
-
+function myAccount(){
+    console.log(document.querySelector(".text-tk").getAttribute("data-id"));
+}
 // // Kiểm tra xem có tài khoản đăng nhập không ?
 // function kiemtradangnhap() {
 //     let currentUser = localStorage.getItem('currentuser');
@@ -440,7 +442,7 @@ signupButton.addEventListener('click', () => {
                 showToast(`Đăng ký thành công`);
                 modalCloseForm();
                 kiemtradangnhap();
-                updateAmount();
+                //updateAmount();
             } else {
                 showToast(`Tài khoản đã tồn tại`);
             }
@@ -489,7 +491,7 @@ loginButton.addEventListener('click', () => {
                 modalCloseForm();
                 kiemtradangnhap();
                 checkAdmin();
-                updateAmount();
+                //updateAmount();
             }
         } else {
             showToast(`Sai mật khẩu`)
@@ -517,7 +519,7 @@ function logOut() {
     }
     localStorage.setItem('accounts', JSON.stringify(accounts));
     localStorage.removeItem('currentuser');
-    window.location = "/";
+    window.location = "index.html";
 }
 
 
@@ -800,74 +802,84 @@ function initApp() {
 document.addEventListener('DOMContentLoaded', initApp);
 
 document.querySelector(".checkout-btn").addEventListener("click",e =>{
-    window.location.href='thantoan.html';
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const thisCart = cart;
-    let total = 0;
-    cart.forEach(item => {
-         itemTotal = item.price * item.quantity;
-         total += itemTotal;
-    })
-    let orders = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders')) : []; 
-    let order ={
-        id: orders.length + 1,
-        id_customer : document.querySelector(".auth-container .text-tk").getAttribute("data-id"),
-        cart: thisCart,
-        tongTien: total,
-    }
-    console.log(order);
-    orders.push(...orders,order);
-    localStorage.setItem("orders",JSON.stringify(orders));
+    if(document.querySelector(".auth-container .text-tk").getAttribute("data-id") != null){
+        window.location.href='thantoan.html';
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const thisCart = cart;
+        let total = 0;
+        cart.forEach(item => {
+            itemTotal = item.price * item.quantity;
+            total += itemTotal;
+        })
+        let orders = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders')) : []; 
+        let order ={
+            id: orders.length + 1,
+            id_customer : document.querySelector(".auth-container .text-tk").getAttribute("data-id"),
+            cart: thisCart,
+            tongTien: total,
+        }
+        //console.log(order);
+        orders.push(order);
+        localStorage.setItem("orders",JSON.stringify(orders));
+    }else{
+        showToast("Hãy Đăng Nhập Tài Khoản Để Mua Sản Phẩm");
+    }   
 });
 
 document.querySelector('.buyNow').addEventListener("click",e =>{
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let cartFake = cart;
-    localStorage.setItem("cartFake",JSON.stringify(cartFake));
-    localStorage.removeItem("cart");
-    let cart_buy_now = localStorage.getItem('cart_buy_now') ? JSON.parse(localStorage.getItem('cart_buy_now')) : [];
-    
-    
-    if (!selectedSize) {
-        showToast(`Hãy chọn size trước`)
-        return;
+    if(document.querySelector(".auth-container .text-tk").getAttribute("data-id") != null){
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let cartFake = cart;
+        localStorage.setItem("cartFake",JSON.stringify(cartFake));
+        localStorage.removeItem("cart");
+        let cart_buy_now = localStorage.getItem('cart_buy_now') ? JSON.parse(localStorage.getItem('cart_buy_now')) : [];
+        
+        
+        if (!selectedSize) {
+            showToast(`Hãy chọn size trước`)
+            return;
+        }
+
+        const product = products.find(item => item.id === currentProductId);
+
+        if (!product) return;
+
+        const cartItem = {
+            ...product,
+            size: selectedSize, // Include the selected size
+            quantity: detailQuantity,
+        };
+
+        // Check if the same product with the same size already exists in the cart
+        const existingItem = cart.find(item => item.id === cartItem.id && item.size === cartItem.size);
+        if (existingItem) {
+            existingItem.quantity += cartItem.quantity;
+        } else {
+            cart_buy_now.push(cartItem);
+        }
+        localStorage.setItem("cart_buy_now",JSON.stringify(cart_buy_now));
+        
+        let total = 0;
+        cart_buy_now.forEach(item => {
+            itemTotal = item.price * item.quantity;
+            total += itemTotal;
+        })
+
+        let orders = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders')) : []; 
+        let order ={
+            id: orders.length + 1,
+            id_customer : document.querySelector(".auth-container .text-tk").getAttribute("data-id"),
+            cart: cart_buy_now,
+            tongTien: total,
+        }
+        //console.log(order);
+        orders.push(order);
+        localStorage.setItem("orders",JSON.stringify(orders));
+        window.location.href = "thantoan.html";
     }
-
-    const product = products.find(item => item.id === currentProductId);
-
-    if (!product) return;
-
-    const cartItem = {
-        ...product,
-        size: selectedSize, // Include the selected size
-        quantity: detailQuantity,
-    };
-
-    // Check if the same product with the same size already exists in the cart
-    const existingItem = cart.find(item => item.id === cartItem.id && item.size === cartItem.size);
-    if (existingItem) {
-        existingItem.quantity += cartItem.quantity;
-    } else {
-        cart_buy_now.push(cartItem);
+    else{
+        showToast("Hãy Đăng Nhập Tài Khoản Để Mua Sản Phẩm");
     }
-    localStorage.setItem("cart_buy_now",JSON.stringify(cart_buy_now));
     
-    let total = 0;
-    cart_buy_now.forEach(item => {
-         itemTotal = item.price * item.quantity;
-         total += itemTotal;
-    })
-
-    let orders = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders')) : []; 
-    let order ={
-        id: orders.length + 1,
-        id_customer : document.querySelector(".auth-container .text-tk").getAttribute("data-id"),
-        cart: cart_buy_now,
-        tongTien: total,
-    }
-    console.log(order);
-    orders.push(order);
-    localStorage.setItem("orders",JSON.stringify(orders));
-    window.location.href = "thantoan.html";
 });
 window.onload = checkAdmin();

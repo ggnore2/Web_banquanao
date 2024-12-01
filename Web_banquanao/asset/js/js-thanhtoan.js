@@ -3,6 +3,9 @@ function getPathImage(path) {
     const pathName = pathParts.pop();
     return "./asset/image/" + pathName;
 }
+function formatCurrency(amount) {
+    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+}
 
 function renderCart(){
     let tongTien = 0 ;
@@ -15,27 +18,27 @@ function renderCart(){
         htmlResult += `<li>
                         <div><img class="img-sp" src="${getPathImage(element.image)}"></div>
                         <div class="name-sp">Tên Sản Phẩm: ${element.name}</div>
-                        <div><p class="price-sp">Giá: ${element.price}</p></div>
+                        <div><p class="price-sp">Giá: ${formatCurrency(element.price)}</p></div>
                         <div><p class="quantity-sp">Số Lượng${element.quantity}</p></div>
                         <div><input type="text" class="voucher-code" placeholder="Nhập mã voucher">
                             <button class="apply-voucher-btn" onclick="applyVoucher()">Áp dụng</button></div>
                     </li>`;
         tongTien += element.quantity * element.price;
     });
-    document.querySelector(".total-sp").innerHTML = `<h1>Tổng Tiền: ${tongTien} VND</h1>`;
+    document.querySelector(".total-sp").innerHTML = `<h1>Tổng Tiền: ${formatCurrency(tongTien)} VND</h1>`;
 }else {
     cart_buy_now.forEach(element => {
         htmlResult += `<li>
                         <div><img class="img-sp" src="${getPathImage(element.image)}"></div>
                         <div class="name-sp">Tên Sản Phẩm: ${element.name}</div>
-                        <div><p class="price-sp">Giá: ${element.price}</p></div>
+                        <div><p class="price-sp">Giá: ${formatCurrency(element.price)}</p></div>
                         <div><p class="quantity-sp">Số Lượng: ${element.quantity}</p></div>
                         <div><input type="text" class="voucher-code" placeholder="Nhập mã voucher">
                             <button class="apply-voucher-btn" onclick="applyVoucher()">Áp dụng</button></div>
                     </li>`;
-        tongTien = element.price
+        tongTien += element.price * element.quantity;
     });
-    document.querySelector(".total-sp").innerHTML = `<h1>Tổng Tiền: ${tongTien} VND</h1>`;
+    document.querySelector(".total-sp").innerHTML = `<h1>Tổng Tiền: ${formatCurrency(tongTien)} VND</h1>`;
 }
     document.querySelector(".cartContainer").innerHTML = htmlResult;
     localStorage.removeItem("cart_buy_now");
@@ -56,7 +59,6 @@ function applyVoucher() {
 }
 document.querySelector(".btn-payment").addEventListener("click", element=>{
     element.preventDefault();
-    console.log("123");
     window.location.href="index.html";
 });
 

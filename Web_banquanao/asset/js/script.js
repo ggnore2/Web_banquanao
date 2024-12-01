@@ -202,7 +202,7 @@ function handleProcessDetailData(event){
         localStorage.setItem("orders",JSON.stringify(newFilterOrders));
         //rerender web
         showOrderfromLocal();
-        console.log("delete");
+        //console.log("delete");
     }
     else if(clicked.classList.contains("Details")){
         const idDetail = clicked.getAttribute("data-id");
@@ -211,33 +211,33 @@ function handleProcessDetailData(event){
         }
         AdminContentMain[6].classList.add("Active");
              
-        console.log(idDetail);
+        //console.log(idDetail);
         const orders = JSON.parse(localStorage.getItem("orders")) || [];
         // lọc ra đơn hàng chính
         let detailOrder = orders.find(element => {
             return element.id == idDetail;
         });
         const detailProducts = detailOrder.cart;
-        console.log(detailProducts);
+        //console.log(detailProducts);
         let tongTien = 0;
         //từ đơn hàng chính truy xuất ra sản phẩm 
-        console.log(products);
+        //console.log(products);
         let htmlResult ='';
         detailProducts.forEach(e => {
             htmlResult = htmlResult + `<tr>
                                         <td>${e.id}</td>
                                         <td><img style=" width: 70px;" src="${getPathImage(e.image)}" alt="productImg"></td>
                                         <td>${e.name}</td>
-                                        <td>${e.price}</td>
+                                        <td>${vnd(e.price)}</td>
                                         <td>${e.catagory}</td>
                                         <td>${e.quantity}</td>
-                                        <td>${(e.price) * (e.quantity)}</td>
+                                        <td>${vnd((e.price) * (e.quantity))}</td>
                                     </tr>`;
             tongTien += (e.price) * (e.quantity);
         });
         htmlResult += `<tr class="totalDisplay">
                                             <td colspan="6">Tổng Cộng:</td>
-                                            <td>${tongTien}đ</td>
+                                            <td>${vnd(tongTien)}</td>
                                         </tr>`;
         
             // đưa kết quả toàn bộ danh mục vào tbody của table
@@ -247,21 +247,24 @@ function handleProcessDetailData(event){
 document.querySelector(".ordersTable").addEventListener("click",handleProcessDetailData);
 
 // thanh tìm kiếm
-const orderList = document.querySelectorAll(".ordersTable tr");
-
 function handleFilterOrders(){
+    const orderList = document.querySelectorAll(".ordersTable tr");
     // lấy tất cả products từ local ra 
     const orders = JSON.parse(localStorage.getItem("orders")) || []; 
     // chuyển đổi tên sản phẩm cần tìm về dạng chữ in thường
     const searchTerm = searchBar.value.toLowerCase(); 
     // duyệt mảng sản phẩm có tên sp chứa kí tự trong thanh tìm kiếm   
     for(let i=0;i<orders.length;i++){
-        const orderID = orders[i].id.toLowerCase(); 
-        if (orderID.includes(searchTerm)){
-            orderList[i].style.display ="";
+        const cusID = orders[i].id_customer.toLowerCase(); 
+        if(searchTerm != ""){
+            if (cusID == searchTerm){
+                orderList[i].style.display ="";
+            }else{
+                orderList[i].style.display ="none";
+            }
         }else{
-            orderList[i].style.display ="none";
-        }
+            showOrderfromLocal();
+        }     
     } 
 };
 searchBar.addEventListener("keyup",handleFilterOrders);
@@ -330,13 +333,13 @@ function submitProductForm(event){
         const productsNew = [dataForm,...products];
         // 2.2 lưu trữ dữ liệu products đến localStorage
         localStorage.setItem("products", JSON.stringify(productsNew));
-        console.log(products);
+        //console.log(products);
 
         document.querySelectorAll(".addingForm input")
         .forEach( element => {
         element.value = '';        
         });
-        console.log(dataForm);
+        //console.log(dataForm);
         // showProductfromLocal();
         window.onload = renderProducts();
     }
@@ -371,7 +374,7 @@ function renderProducts(){
                             <td>${element.id}</td>                                   
                             <td><img style=" width: 70px;" src="${getPathImage(element.image)}" alt="productImg"></td>                                    
                             <td>${element.name}</td>                                   
-                            <td>${element.price}</td>                                    
+                            <td>${vnd(element.price)}</td>                                    
                             <td>${element.catagory}</td>                                                                       
                             <td><button data-id="${element.id}" class="Fix">Sửa</button>|<button data-id="${element.id}" class="Delete">Xóa</button></td>
                         </tr>`;
@@ -406,30 +409,6 @@ function getPathImage(path) {
     const pathName = pathParts.pop();
     return "./asset/image/" + pathName;
 } 
-// function extractFileName() { 
-//     const fileInput = document.getElementById('ProductImg');
-//      if (fileInput.files.length > 0) {
-//         // Get the file name directly from the File object 
-//         const fileName = fileInput.files[0].name; console.log("File name:", fileName); 
-//         alert("File name: " + fileName); 
-//     } 
-//         else { 
-//             console.log("No file selected."); 
-//         }
-//      }
-// extractFileName();
-// function getPathImage2(path){
-//     const filePath = "C:\\fakepath\\6.jpg";
-
-// // Find the last index of the backslash
-// const lastIndex = path.lastIndexOf('\\');
-
-// // Extract the substring starting just after the last backslash
-// const fileName = filePath.substring(lastIndex + 1);
-
-// console.log("File name:", fileName);
-
-// }
 
 function handleProcessData(event){
     const clicked = event.target;
@@ -437,14 +416,14 @@ function handleProcessData(event){
     const products = JSON.parse(localStorage.getItem("products")) || [];
     if(clicked.classList.contains("Delete") && confirm("Bạn Chắn Chắn Muốn Xóa ?")){
         const id_Delete = clicked.getAttribute("data-id");
-        console.log(id_Delete);
+        //console.log(id_Delete);
         // mảng lọc ra phần tử cần delete
         const newFilterProducts = products.filter(
             element => {
                 return element.id != id_Delete;             
             }
         );
-        console.log(newFilterProducts);
+        //console.log(newFilterProducts);
         // lưu vào localStorage
         localStorage.setItem("products",JSON.stringify(newFilterProducts));
         // rerender web
@@ -519,7 +498,7 @@ function handleUpdate(event){
     const ProductPrice = document.querySelector(".FixingForm .dataProducts .formGroup .ProductPrice").value;
     const ProductImg = document.querySelector(".FixingForm .dataImgProduct input").value;
     const idUpdate = updateBtn.getAttribute("data-id");
-    console.log(idUpdate);
+    //console.log(idUpdate);
     if(ProductImg === "" || ProductImg === null){
         const productsUpdate = products.map(element =>{
             if(element.id == idUpdate){
@@ -578,7 +557,7 @@ function handleFilterProducts(){
         <td>${element.id}</td>                                   
         <td><img style=" width: 70px;" src="${getPathImage(element.image)}" alt="productImg"></td>                                    
         <td>${element.name}</td>                                   
-        <td>${element.price}</td>                                    
+        <td>${vnd(element.price)}</td>                                    
         <td>${element.catagory}</td>                                                                       
         <td><button data-id="${element.id}" class="Fix">Sửa</button>|<button data-id="${element.id}" class="Delete">Xóa</button></td>
     </tr>`;
@@ -605,7 +584,7 @@ document.querySelector(".returnPage").addEventListener("click", element => {
         AdminContentMain[i].classList.remove("Active");
     }
     AdminContentMain[2].classList.add("Active");
-    console.log(AdminContentMain);
+    //console.log(AdminContentMain);
 });
 
 // **************************************************************************************************************

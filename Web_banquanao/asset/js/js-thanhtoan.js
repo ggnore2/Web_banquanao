@@ -57,10 +57,10 @@ function applyVoucher() {
         alert('Vui lòng nhập mã voucher.');
     }
 }
-// document.querySelector(".btn-payment").addEventListener("click", element=>{
-//     element.preventDefault();
-//     window.location.href="index.html";
-// });
+document.querySelector(".btn-payment").addEventListener("click", element=>{
+    element.preventDefault();
+    window.location.href="index.html";
+});
 
 document.querySelector(".material-icons").addEventListener("click", e => {
     window.location.href="index.html";

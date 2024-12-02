@@ -3,11 +3,6 @@
     --Content-bg-color: #17252A;
     --top-height: 70px;
 }
-#searchBar{ 
-    padding: 5px;
-    width: 80%;
-    font-size: 16px;
-}
 *{
     padding: 0;
     margin: 0;
@@ -182,7 +177,11 @@ li{
     text-align: left;
     font-size: 10px;
     font-weight: 500;
+    padding: 5px;
+    width: 80%;
+    font-size: 16px;
 }
+
 .Admin-Content-Main-Content-dashBoard{
     width: 100%;
     display: flex;
@@ -745,6 +744,95 @@ li{
     color: white;
     cursor: pointer;
 }
+#startDate{
+    border-radius:12px;
+    height: 25px;
+    width: 100px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    margin-left:20px;
+    font-size: 13px;
+    width:15%;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+#endDate{
+    border-radius:12px;
+    height: 25px;
+    width: 100px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 13px;
+    width:15%;
+    margin-left:0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+#endDate::-webkit-calendar-picker-indicator{
+    background-color: #3AAFA9;
+    border-radius:8px;
+}
+#startDate::-webkit-calendar-picker-indicator{
+    background-color: #3AAFA9;
+    border-radius:8px;
+}
+.searchOrders{
+    border:solid #17252A;
+    height:0px;
+    background-color: #17252A;
+    color:white;
+    margin-left:5px;
+    margin-right:20px;
+}
+.searchOrders span {
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+.searchOrders:hover span {
+  transform: translateY(-8px);
+  opacity: 0.8;
+}
+.searchOrders:active span {
+  transform: translateY(2px);
+  opacity: 1;
+}
+/* Hiệu ứng sóng */
+.searchOrders::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: goldenrod;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+  pointer-events: none;
+}
+.search-button:hover::before {
+  width: 200%;
+  height: 200%;
+}
+#order_status{
+    border-radius:12px;
+    height: 25px;
+    width: 100px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 13px;
+    width:max-content;
+    margin-left:0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.material-symbols-outlined{
+    color:#e7d04d;
+}
 /**/
  @media only screen and (max-width: 1200px) {
     body{
@@ -816,6 +904,7 @@ li{
     }
  
 }
+
 
 @media only screen and (max-width: 786px) {
     body{

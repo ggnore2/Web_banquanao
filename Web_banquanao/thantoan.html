@@ -93,15 +93,16 @@
                     </label>
                     <div class="errorMessage"></div>
                  </div>
+                 <!-- Vùng hiển thị giao diện nhập thông tin thẻ ATM -->
+                 <div id="dynamic-content"></div>
                  <div class="form-group">
                     <label for="pttt">Phương thức thanh toán<span class="required">(*)</span></label>
                     <select id="pttt" required>
                         <option value=""></option>
-                        <option value="1">Thanh toán khi nhận hàng</option>
-                        <option value="2">Thẻ ATM/Internet banking</option>
-                        <option value="3">Thanh toán bằng thẻ tín dụng</option>
-                        <option value="4">Thanh toán bằng mã QR</option>
-                        <option value="5">Thanh toán bằng ví MoMo</option>
+                        <option value="cash">Thanh toán khi nhận hàng</option>
+                        <option value="atm">Thẻ ATM/Internet banking</option>
+                        <option value="qr">Thanh toán bằng mã QR</option>
+                        <option value="momo">Thanh toán bằng ví MoMo</option>
                     </select>
                     <div class="errorMessage"></div>
                 </div>

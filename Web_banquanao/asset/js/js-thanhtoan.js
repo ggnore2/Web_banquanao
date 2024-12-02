@@ -68,7 +68,7 @@ document.querySelector(".material-icons").addEventListener("click", e => {
 //lỗi thông tin trống trang thanh toán
 function submitPayment(event) {
     event.preventDefault(); // Ngừng hành động mặc định của nút submit (chuyển trang)
-    const inputs = document.querySelectorAll('.address-form .form-group input, .address-form .form-group select, .agreement input'); // Chọn tất cả các input và select
+    const inputs = document.querySelectorAll('.address-form .form-group input, .address-form .form-group select, .agreement input'); 
     const agreeCheckbox = document.getElementById('agree');
     let success = true;
     inputs.forEach(input => {
@@ -114,4 +114,59 @@ function submitPayment(event) {
 }
 const mainBtn = document.querySelector(".btn-payment");
 mainBtn.addEventListener("click", submitPayment);
+// **************************************************************************
 
+function initializePayment() {
+    const paymentMethod = document.getElementById('pttt');
+    const dynamicContent = document.getElementById('dynamic-content');
+
+    // Xử lý sự kiện khi thay đổi phương thức thanh toán
+    paymentMethod.addEventListener('change', function () {
+      if (paymentMethod.value === 'atm') {
+        dynamicContent.innerHTML = `
+          <div class="form-atm">
+            <label for="card-number">Số thẻ:</label>
+            <input type="text" id="card-number" placeholder="Nhập số thẻ">
+          </div>
+          <div class="form-atm">
+            <label for="card-name">Tên chủ thẻ:</label>
+            <input type="text" id="card-name" placeholder="Nhập tên chủ thẻ">
+          </div>
+          <div class="form-atm">
+            <label for="expiry-date">Ngày hết hạn:</label>
+            <input type="month" id="expiry-date">
+          </div>
+          <div class="form-atm">
+            <label for="cvv">CVV:</label>
+            <input type="password" id="cvv" placeholder="Nhập CVV">
+          </div>
+        `;
+      } else {
+        dynamicContent.innerHTML = '';
+      }
+    });
+  }
+
+  function submitPayment() {
+    const paymentMethod = document.getElementById('pttt');
+    const method = paymentMethod.value;
+    if (method === 'cash') {
+      alert('Bạn đã chọn thanh toán bằng tiền mặt.');
+      window.location.href = "index.html";
+    } else {
+      const cardNumber = document.getElementById('card-number').value;
+      const cardName = document.getElementById('card-name').value;
+      const expiryDate = document.getElementById('expiry-date').value;
+      const cvv = document.getElementById('cvv').value;
+
+      if (cardNumber!=='' && cardName!=='' && expiryDate!=='' && cvv!=='') {
+        alert('Thanh toán bằng ATM thành công!');
+        window.location.href = "index.html";
+      } else {
+        alert('Vui lòng nhập đầy đủ thông tin thẻ.');
+      }
+    }
+  }
+
+  // Khởi chạy hàm khi tải trang
+  window.onload = initializePayment;

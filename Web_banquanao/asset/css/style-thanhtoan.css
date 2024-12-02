@@ -354,7 +354,57 @@ li{
 .errorMessage {
     color: red;
     font-size: 16px;
+    position: relative;
+    
 }
+/* ************ */
+.form-atm {
+    margin-bottom: 50px;
+    position: relative;
+    margin-left:10px;
+}
+.form-atm input {
+    width: 95%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.form-atm label {
+    position: absolute;
+    top:-10px;
+    left:-40px;     
+    width:90%;         
+    margin-bottom: 10px;
+    margin-top: 20px;
+    display: block;     
+    transform: translateY(-150%); 
+    background: white;      
+    color: #333;
+    font-size: 20px;
+    font-weight: 500;
+    pointer-events: none;  
+}
+#card-number{
+   margin-left:-50px; 
+    
+}
+#card-name{
+    margin-left:-50px; 
+    width:100%;
+}
+#card-date{
+    margin-left:-50px; 
+}
+#expiry-date{
+    margin-left:-50px;
+}
+#cvv{
+    margin-left:-50px; 
+}
+   
 @media only screen and (max-width: 1200px) {
 
 }

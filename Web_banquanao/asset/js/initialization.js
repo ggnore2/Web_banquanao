@@ -498,7 +498,7 @@ function createAdminAccount() {
     if (!accounts) {
         accounts = [];
         accounts.push({
-            fullname: "Lý Chí Bảo",
+            fullname: "VinhThai",
             phone: "0912345678",
             password: "123456",
             address: 'https://github.com/hgbaodev',

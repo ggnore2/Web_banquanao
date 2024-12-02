@@ -67,20 +67,6 @@ for(let i = 0; i < sidebars.length; i++) {
     };
 }
 
-// chưa hoàn thành ( xác nhận đơn hàng thành công cho KH true /false)
-// const confirm_order_display = document.querySelectorAll(".nonConfirmOrder");
-// let confirm_order = false;
-
-// for(let index = 0 ; index < confirm_order_display.length; index++){
-//     confirm_order_display[index].addEventListener("click",event => {
-//         event.preventDefault();
-//         if(!confirm_order){
-//             confirm_order_display[index].classList.add("confirmOrder");
-//             confirm_order_display[index].textContent ="Đã Xác Nhận";
-            
-//         }
-//     });
-// }
 
 // account_list
 // Hiển thị dữ liệu ngay lập tức khi thêm sản phẩm thành công
@@ -94,8 +80,11 @@ function showAccountFromLocal() {
                                     <td>${element.userType}</td>                                
                                     <td>${element.fullname}</td>                                   
                                     <td>${element.password}</td>  
-                                    <td>${element.phone}</td>                               
-                                    <td><button data-id=${element.id} class="Delete">Xóa</button></td>
+                                    <td>${element.phone}</td> 
+                                    <td>${element.status}</td>
+                                    <td>${element.cancellations}</td>                              
+                                    <td><button data-id="${element.id}" class="Fix">Sửa</button>|<button data-id="${element.id}" class="Delete">Xóa</button>
+                                    |<button data-id="${element.id}" class="Ban" id="${element.id}">Khóa | Gỡ Khóa</button></td>
                                 </tr>`;
     });
     // đưa kết quả toàn bộ danh mục vào tbody của table
@@ -119,7 +108,148 @@ function handleProcessAccountData(event){
         // rerender web
         showAccountFromLocal();
     }
+    else if(clicked.classList.contains("Fix")){
+        // lấy id
+        const updateAccountBtn = document.querySelector(".updateAccountBtn");
+        const idEdit = clicked.getAttribute("data-id");
+        updateAccountBtn.setAttribute("data-id",idEdit);
+        const editingAccount = accounts.find(element => {
+            if(element.id == idEdit){
+                return element;
+            }
+        });
+        // đưa value lên ô input đang chỉnh sửa 
+        for(let i = 0; i < AdminContentMain.length; i++) {
+            AdminContentMain[i].classList.remove("Active");
+        }
+        AdminContentMain[7].classList.add("Active");
+
+        document.querySelectorAll(".FixingForm .dataProducts input").forEach(element =>{
+            element.value = editingAccount[element.name];     
+        });
+    }else if(clicked.classList.contains("Ban")){
+        const idBan = clicked.getAttribute("data-id");
+        const banAccount  = accounts.map(element =>{
+                if(element.id == idBan){
+                    if(element.status !== 0){             
+                        return {
+                            fullname: element.fullname,
+                            phone: element.phone,
+                            password: element.password,
+                            address: element.address,
+                            email: element.email,
+                            status: 0,
+                            join: element.join,
+                            cart: element.cart,
+                            cancellations: element.cancellations,
+                            userType: element.userType,
+                            id: element.id
+                        };
+                    }
+                    else{                                             
+                        return {
+                            fullname: element.fullname,
+                            phone: element.phone,
+                            password: element.password,
+                            address: element.address,
+                            email: element.email,
+                            status: 1,
+                            join: element.join,
+                            cart: element.cart,
+                            cancellations: 0,
+                            userType: element.userType,
+                            id: element.id
+                        };
+                    }
+                }
+                else{
+                    return element;
+                }
+            });
+            localStorage.setItem("accounts",JSON.stringify(banAccount));
+            showAccountFromLocal();
+    }
 }
+
+
+function handleUpdateAccount(event){
+    event.preventDefault();
+    let success = true;
+    const inputAllFixingSelector = document.querySelectorAll(".FixingForm .dataProducts input");
+
+    let fullNameUser = document.getElementById('fullname').value;
+    let phoneUser = document.getElementById('phone').value;
+    let passwordUser = document.getElementById('password').value;
+    let passwordConfirmation = document.getElementById('password_confirmation').value;
+    let emailUser = document.getElementById('email').value;
+    let addressUser = document.getElementById('address').value;
+    // thực hiện validate
+    for(let i=0; i<inputAllFixingSelector.length; i++){
+        let inputAllValue = inputAllFixingSelector[i].value;
+        let inputAllValueName = inputAllFixingSelector[i].name;
+        let divErrorMessage = document.querySelectorAll(".FixingForm .dataProducts .formGroup .errorMessage");
+        if(inputAllFixingSelector[i].name !== "password_confirmation"){
+            if(inputAllValue == ""){
+                inputAllFixingSelector[i].classList.add("error");
+                inputAllFixingSelector[i].focus();
+                let errorMessage = inputAllValueName + " Không Được Bỏ Trống";
+                divErrorMessage[i].textContent = errorMessage;
+                success = false;
+            }else{
+                inputAllFixingSelector[i].classList.remove("error"); 
+                divErrorMessage[i].textContent ="";       
+            }
+        }
+        else{
+            if (passwordConfirmation !== passwordUser) {
+                document.getElementById('password_confirmation').value = '';
+                inputAllFixingSelector[i].classList.add("error");
+                inputAllFixingSelector[i].focus();
+                let errorMessage =" Mật khẩu không khớp";
+                divErrorMessage[i].textContent = errorMessage;
+                success = false;
+            } else {
+                inputAllFixingSelector[i].classList.remove("error"); 
+                divErrorMessage[i].textContent ="";
+            }
+        }
+    }
+    
+    
+    if(success){             
+    const accounts = JSON.parse(localStorage.getItem("accounts")) || [];        
+    const idUpdate = document.querySelector(".updateAccountBtn").getAttribute("data-id");
+    
+    const accountUpdate = accounts.map(element =>{
+        if(element.id == idUpdate){
+            return {
+                fullname: fullNameUser,
+                phone: phoneUser,
+                password: passwordUser,
+                address: addressUser,
+                email: emailUser,
+                status: element.status,
+                join: element.join,
+                cart: element.cart,
+                cancellations: element.cancellations,
+                userType: element.userType,
+                id: element.id
+            };
+        }
+        else{
+                return element;
+            }
+        });
+        localStorage.setItem("accounts",JSON.stringify(accountUpdate));
+        for(let i = 0 ; i < AdminContentMain.length ; i++){
+            AdminContentMain[i].classList.remove("Active");
+        }
+        AdminContentMain[1].classList.add("Active");
+        showAccountFromLocal();
+    }
+}
+document.querySelector(".updateAccountBtn").addEventListener("click",handleUpdateAccount);
+
 showAccountFromLocal();
 
 document.querySelector(".accountTable").addEventListener("click",handleProcessAccountData);
@@ -158,33 +288,162 @@ function sumTotalBill(objectsList){
     return TotalBill;
 }
 
-
-// order list 
-// const orders = [{id: "123",cusID: "999",Products:[{idProduct:"b3ba0c41-6514-4043-aa4c-ccbb801860f7" , soLuong: 2},
-//                 {idProduct:"79f87cc3-dfa1-4d12-9a26-c30464a62681", soLuong: 1}],tongTien:170000},
-//                 {id:"456",cusID:"357",Products:[{idProduct:"b4a31cb2-1335-47fc-957e-353001b0efc4",soLuong:1}] , tongTien:50000}];
-
-// localStorage.setItem("orders",JSON.stringify(orders));
-
+// Function to cancel an order
+function cancelOrder(userId) {
+    // Set the cancellation limit
+    const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+    const CANCELLATION_LIMIT = 3;
+    const accountUpdate = accounts.map(element =>{
+        if(element.id === userId){
+            if( element.cancellations < CANCELLATION_LIMIT){
+                return {
+                    fullname: element.fullname,
+                    phone: element.phone,
+                    password: element.password,
+                    address: element.address,
+                    email: element.email,
+                    status: element.status,
+                    join: element.join,
+                    cart: element.cart,
+                    cancellations: element.cancellations+1,
+                    userType: element.userType,
+                    id: element.id
+                };
+            }
+            else if(element.cancellations === CANCELLATION_LIMIT){
+                return {
+                    fullname: element.fullname,
+                    phone: element.phone,
+                    password: element.password,
+                    address: element.address,
+                    email: element.email,
+                    status: 0,
+                    join: element.join,
+                    cart: element.cart,
+                    cancellations: element.cancellations,
+                    userType: element.userType,
+                    id: element.id
+                };
+            }
+            else{
+                return element;
+            }
+        }
+        else{
+            return element;
+        }
+        });
+        localStorage.setItem("accounts",JSON.stringify(accountUpdate));
+        showAccountFromLocal();
+}
 function showOrderfromLocal() {
     // lấy toàn bộ danh mục trong local
     const orders = JSON.parse(localStorage.getItem("orders")) || [];
     // xây dựng cấu trúc html cho danh mục
     let htmlResult ='';
     orders.forEach(element =>{
-        htmlResult = htmlResult + `<tr>                                   
-                                    <td>${element.id}</td>                                    
-                                    <td>${element.id_customer}</td>                                    
-                                    <td>
-                                        <button data-id="${element.id}" class="Details">Xem</button>
-                                    </td>                                                                                                            
-                                    <td><button class="nonConfirmOrder">Chưa Xác Nhận</button></td>                                    
-                                    <td><button data-id="${element.id}" class="Remove">Xóa</button></td>
-                                </tr>`;
+        if(element.status === 0){
+            htmlResult = htmlResult + `<tr>                                   
+            <td>${element.id}</td>                                    
+            <td>${element.id_customer}</td>  
+            <td>${element.start_order}</td>                                    
+            <td>
+                <button data-id="${element.id}" class="Details">Xem</button>
+            </td>                                                                                                            
+            <td>
+                <button data-id="${element.id}" class="nonConfirmOrder">Chưa Xác Nhận</button>
+            </td> 
+            <td>
+                <button data-id="${element.id}" class="Remove">Xóa</button>
+            </td>
+        </tr>`;   
+        }
+        else if(element.status === 1){
+            htmlResult = htmlResult + `<tr>                                   
+            <td>${element.id}</td>                                    
+            <td>${element.id_customer}</td> 
+            <td>${element.start_order}</td>                                     
+            <td>
+                <button data-id="${element.id}" class="Details">Xem</button>
+            </td>                                                                                                            
+            <td>
+                <button data-id="${element.id}" class="nonConfirmOrder confirmOrder">Đã Xác Nhận</button>
+            </td> 
+            <td>
+                <button data-id="${element.id}" class="Remove">Xóa</button>
+            </td>
+        </tr>`;
+        }
+        else if(element.status === 2){
+            htmlResult = htmlResult + `<tr>                                   
+            <td>${element.id}</td>                                    
+            <td>${element.id_customer}</td> 
+            <td>${element.start_order}</td>                                     
+            <td>
+                <button data-id="${element.id}" class="Details">Xem</button>
+            </td>                                                                                                            
+            <td>
+                <button data-id="${element.id}" class="nonConfirmOrder confirmOrder">Giao Hàng Thành Công</button>
+            </td> 
+            <td>
+                <button data-id="${element.id}" class="Remove">Xóa</button>
+            </td>
+        </tr>`;     
+        }
+        else if(element.status === -1){
+            htmlResult = htmlResult + `<tr>                                   
+            <td>${element.id}</td>                                    
+            <td>${element.id_customer}</td> 
+            <td>${element.start_order}</td>                                   
+            <td>
+                <button data-id="${element.id}" class="Details">Xem</button>
+            </td>                                                                                                            
+            <td>
+                <button data-id="${element.id}" class="cancelOrder ">Đã Bị Hủy</button>
+            </td> 
+            <td>
+                <button data-id="${element.id}" class="Remove">Xóa</button>
+            </td>
+        </tr>`;  
+        idCus = Number(element.id_customer);
+        cancelOrder(idCus);
+        }
     });
     // đưa kết quả toàn bộ danh mục vào tbody của table
     document.querySelector(".ordersTable").innerHTML = htmlResult;
 }
+
+
+function searchOrders(){
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+    const startDate = new Date(document.getElementById('startDate').value);
+    const endDate = new Date(document.getElementById('endDate').value);
+    const orderList = document.querySelectorAll(".ordersTable tr");
+    
+    for(let i = 0 ; i < orders.length ; i++){
+        const orderDate = new Date(orders[i].start_order);
+            if(orderDate >= startDate && orderDate <= endDate){
+                orderList[i].style.display = "";
+            }
+            else{
+                orderList[i].style.display = "none";
+            }
+        }
+}
+
+document.getElementById('order_status').addEventListener("click",e => {
+    const orderList = document.querySelectorAll(".ordersTable tr");
+    let order_status = document.getElementById('order_status').value;
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+    for(let i = 0 ; i < orders.length ; i++){
+        if(orders[i].status == order_status){
+            orderList[i].style.display = "";
+        }
+        else{
+            orderList[i].style.display = "none";
+        }
+    }
+});
 
 function handleProcessDetailData(event){
     const clicked = event.target;
@@ -242,7 +501,28 @@ function handleProcessDetailData(event){
         
             // đưa kết quả toàn bộ danh mục vào tbody của table
             document.querySelector(".detailsTable").innerHTML = htmlResult;       
-    }    }
+    } 
+    else if(clicked.classList.contains("nonConfirmOrder")){
+        const idConfirmOrder = clicked.getAttribute("data-id");
+        const confirmedOrder  = orders.map(element =>{
+            if(element.id == idConfirmOrder){     
+                return {
+                    id: element.id,
+                    id_customer : element.id_customer,
+                    cart: element.cart,
+                    tongTien: element.tongTien,
+                    status: 1,
+                    start_order: element.start_order,
+                };
+            }
+            else{
+                return element;
+            }
+        });
+        localStorage.setItem("orders",JSON.stringify(confirmedOrder));
+        showOrderfromLocal();
+    }  
+}
 
 document.querySelector(".ordersTable").addEventListener("click",handleProcessDetailData);
 
@@ -327,6 +607,7 @@ function submitProductForm(event){
         // console.log(dataForm);
         // 2.1 push đối tượng product vào mảng 
         // mỗi product cần phải có 1 ID unique để phân biệt
+        dataForm["quantity"]=0;
         dataForm["status"] = 1;
         dataForm["id"] = products.length + 1;
         dataForm["price"] = Number(dataForm["price"]);
@@ -348,7 +629,16 @@ function submitProductForm(event){
 mainBtn.addEventListener("click", submitProductForm);
 // showProductfromLocal();
 
-
+function findBestSeller(products)
+ { let bestSeller = products[0];
+     for (let i = 1; i < products.length; i++) { 
+        if (products[i].quantity > bestSeller.quantity) 
+            { 
+                bestSeller = products[i]; 
+            } 
+        } 
+        return bestSeller; 
+    }
 
 // product list
 const products = JSON.parse(localStorage.getItem("products")) || [];
@@ -366,7 +656,6 @@ function renderProducts(){
     const endIndex = startIndex + itemsPerPage;
 
     const productsToShow = products.slice(startIndex, endIndex);
-
     // xây dựng cấu trúc html cho danh mục
     let htmlResult ='';
     productsToShow.forEach(element =>{
@@ -375,12 +664,21 @@ function renderProducts(){
                             <td><img style=" width: 70px;" src="${getPathImage(element.image)}" alt="productImg"></td>                                    
                             <td>${element.name}</td>                                   
                             <td>${vnd(element.price)}</td>                                    
-                            <td>${element.catagory}</td>                                                                       
-                            <td><button data-id="${element.id}" class="Fix">Sửa</button>|<button data-id="${element.id}" class="Delete">Xóa</button></td>
+                            <td>${element.catagory}</td>   
+                            <td>${element.quantity}</td>                                    
+                            <td>${vnd(element.TongTien)}</td>                                                                     
+                            <td><button data-id="${element.id}" class="Fix">Sửa</button>|<button data-id="${element.id}" class="Delete">Xóa</button>
+                            |<button data-id="${element.id}" class="Details">DS Orders</button></td>
                         </tr>`;
     });
+
     // đưa kết quả toàn bộ danh mục vào tbody của table
     productsTable.innerHTML = htmlResult;
+
+    const bestSeller = findBestSeller(products);
+    let htmlBestSellerResult = `<tr><td style="padding:15px; font-weight: bold;">${bestSeller.name}</td></tr>`;
+
+    document.querySelector(".productsSellerTable").innerHTML = htmlBestSellerResult;
 } 
 function renderPagination(){
     const paginationControls = document.getElementById('paginationControls'); 
@@ -461,8 +759,95 @@ function handleProcessData(event){
         // lưu element cần sửa vào local
         // localStorage.setItem("editedElement", JSON.stringify(elementEditing));
     }
+    else if(clicked.classList.contains("Details")){
+        const idDetail = clicked.getAttribute("data-id");
 
+        for(let i = 0; i < AdminContentMain.length; i++){
+            AdminContentMain[i].classList.remove("Active");
+        }
+        AdminContentMain[8].classList.add("Active");
+             
+        //console.log(idDetail);
+        const orders = JSON.parse(localStorage.getItem("orders")) || [];
+        // lọc ra đơn hàng chính
+        const product_order = orders.filter(e => {
+            return e.cart.find( i => {
+                    return i.id == idDetail ;
+            })
+        });
+        document.querySelector(".ordersDetailTable").innerHTML = "";
+        let htmlResult = "";
+
+        product_order.forEach(element => {
+            if(element.status === 0){
+                htmlResult = htmlResult + `<tr>                                   
+                <td>${element.id}</td>                                    
+                <td>${element.id_customer}</td>  
+                <td>${element.start_order}</td>                                    
+                <td>
+                    <button data-id="${element.id}" class="Details">Xem</button>
+                </td>                                                                                                            
+                <td>
+                    <button data-id="${element.id}" class="nonConfirmOrder">Chưa Xác Nhận</button>
+                </td> 
+                <td>
+                    <button data-id="${element.id}" class="Remove">Xóa</button>
+                </td>
+            </tr>`;   
+            }
+            else if(element.status === 1){
+                htmlResult = htmlResult + `<tr>                                   
+                <td>${element.id}</td>                                    
+                <td>${element.id_customer}</td> 
+                <td>${element.start_order}</td>                                     
+                <td>
+                    <button data-id="${element.id}" class="Details">Xem</button>
+                </td>                                                                                                            
+                <td>
+                    <button data-id="${element.id}" class="nonConfirmOrder confirmOrder">Đã Xác Nhận</button>
+                </td> 
+                <td>
+                    <button data-id="${element.id}" class="Remove">Xóa</button>
+                </td>
+            </tr>`;
+            }
+            else if(element.status === 2){
+                htmlResult = htmlResult + `<tr>                                   
+                <td>${element.id}</td>                                    
+                <td>${element.id_customer}</td> 
+                <td>${element.start_order}</td>                                     
+                <td>
+                    <button data-id="${element.id}" class="Details">Xem</button>
+                </td>                                                                                                            
+                <td>
+                    <button data-id="${element.id}" class="nonConfirmOrder confirmOrder">Giao Hàng Thành Công</button>
+                </td> 
+                <td>
+                    <button data-id="${element.id}" class="Remove">Xóa</button>
+                </td>
+            </tr>`;     
+            }
+            else if(element.status === -1){
+                htmlResult = htmlResult + `<tr>                                   
+                <td>${element.id}</td>                                    
+                <td>${element.id_customer}</td> 
+                <td>${element.start_order}</td>                                   
+                <td>
+                    <button data-id="${element.id}" class="Details">Xem</button>
+                </td>                                                                                                            
+                <td>
+                    <button data-id="${element.id}" class="cancelOrder ">Đã Bị Hủy</button>
+                </td> 
+                <td>
+                    <button data-id="${element.id}" class="Remove">Xóa</button>
+                </td>
+            </tr>`;  
+        }
+        });
+        document.querySelector(".ordersDetailTable").innerHTML = htmlResult;
+    }
 }
+document.querySelector(".ordersDetailTable").addEventListener("click",handleProcessDetailData);
 // showProductfromLocal();
 renderProducts();
 renderPagination();
@@ -560,7 +945,7 @@ function handleFilterProducts(){
         <td>${element.name}</td>                                   
         <td>${vnd(element.price)}</td>                                    
         <td>${element.catagory}</td>                                                                       
-        <td><button data-id="${element.id}" class="Fix">Sửa</button>|<button data-id="${element.id}" class="Delete">Xóa</button></td>
+        <td><button data-id="${element.id}" class="Fix">Sửa</button>|<button data-id="${element.id}" class="Delete">Xóa</button>|<button data-id="${element.id}" class="Details">DS Orders</button></td>
     </tr>`;
     });
     document.querySelector(".productsTable").innerHTML = htmlResult;
@@ -586,6 +971,55 @@ document.querySelector(".returnPage").addEventListener("click", element => {
     }
     AdminContentMain[2].classList.add("Active");
     //console.log(AdminContentMain);
+});
+document.querySelector(".returnProductPage").addEventListener("click", element => {
+    element.preventDefault();
+    for(let i = 0 ; i < AdminContentMain.length ; i++){
+        AdminContentMain[i].classList.remove("Active");
+    }
+    AdminContentMain[3].classList.add("Active");
+    //console.log(AdminContentMain);
+});
+// show thông tin tài khoản admin
+const body = document.querySelector("body");
+const modalContainer = document.querySelectorAll('.modal');
+let modalBox = document.querySelectorAll('.mdl-cnt');
+
+function closeModal() {
+    modalContainer.forEach(item => {
+        item.classList.remove('open');
+    });
+    body.style.overflow = "auto";
+}
+
+let container = document.querySelector('.info-admin .modal-container');
+let formsg = document.querySelector('.modal.info-admin')
+
+const currentuser = JSON.parse(localStorage.getItem("currentuser")) || [];
+
+document.querySelector(".ri-arrow-down-s-fill").addEventListener("click", e => {
+    let htmlResult = `<div>
+                        Họ Tên: ${currentuser.fullname}
+                        <br>
+                        <br>
+                        Số Điện Thoại: ${currentuser.phone}
+                        <br>
+                        <br>
+                        Địa Chỉ: ${currentuser.address}
+                        <br>
+                        <br>
+                        Email: ${currentuser.email}
+                        <br>
+                        <br>
+                        Mật Khẩu: ${currentuser.password}
+                        <br>
+                        <br>
+                        </div>`;
+    document.querySelector(".infoAdminContainer").innerHTML = htmlResult;
+    formsg.classList.add('open');
+    container.classList.remove('active');
+    body.style.overflow = "hidden";
+    console.log(formsg);
 });
 
 // **************************************************************************************************************

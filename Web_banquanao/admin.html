@@ -63,14 +63,28 @@
                             <li>
                                 <label for="searchBar"><i class="ri-search-line"></i></label>
                                 <input type="text" class="searchBar" id="searchBar" placeholder="Search for products...">
-                            </li>                                                    
+                            </li>  
+                            <li>
+                                <input type="date" id="startDate">
+                                <i class="ri-arrow-right-line"></i>
+                                <input type="date" id="endDate"> 
+                                <button onclick="searchOrders()">Search Orders</button>
+                            </li>                                                  
+                            <li>
+                                <select name="order_status" id="order_status">Tình Trạng Đơn Hàng
+                                    <option value="0" class="optionGroup">Chưa Xác Nhận</option>
+                                    <option value="1" class="optionGroup">Đã Xác Nhận</option>
+                                    <option value="2" class="optionGroup">Giao Hàng Thành Công</option>
+                                    <option value="-1" class="optionGroup">Đã Bị Hủy</option>
+                                </select>
+                            </li>
                         </ul>
                     </div>
                     <div class="Admin-Content-Top-Right">
                         <ul>                      
                             <li><img src="asset/image/z5982018784254_ed4e276c21a1179c4240a61c706bb6c9.jpg" 
                                 alt="cuteCat">
-                                <p>VinhThai<i class="ri-arrow-down-s-fill"></i></p>
+                                <p><i class="ri-arrow-down-s-fill"></i></p>
                             </li>
                         </ul>
                     </div>
@@ -115,6 +129,9 @@
                                 <th>Mật Khẩu</th>
                                 <!--sdt-->
                                 <th>Số điện thoại</th>
+                                <!--Trạng Thái-->
+                                <th>Trạng Thái</th>
+                                <th>Số Lần Hủy Đơn</th>
                                 <!--Tùy Chỉnh-->
                                 <th>Tùy Chỉnh</th>                    
                             </thead>
@@ -131,7 +148,8 @@
                         <table>
                             <thead>                             
                                 <th>ID Đơn Hàng</th>                                
-                                <th>ID Tài Khoản</th>                                
+                                <th>ID Tài Khoản</th>
+                                <th>Thời Gian Hóa Đơn</th>                                
                                 <th>Chi Tiết</th>                                                                                      
                                 <th>Đánh Dấu</th>                                
                                 <th>Hủy Đơn</th>                    
@@ -156,13 +174,25 @@
                                 <!--Tên Sản Phẩm-->
                                 <th style="width: 300px;">Tên Sản Phẩm</th>
                                 <!--Giá Bán-->
-                                <th>Giá</th>
-                                <!--Kích Cỡ-->
+                                <th>Giá</th>                             
                                 <th>Kiểu Loại</th>
-                                <!--Tùy Chỉnh-->
+                                <th>Số Lượng Bán Ra</th>
+                                <!--Kích Cỡ-->
+                                <th>Tổng Tiền Thu Được</th>
+
                                 <th>Tùy Chỉnh</th>                    
                             </thead>
                             <tbody class="productsTable">                               
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="Admin-Content-Main-Content-List">
+                        <table>
+                            <thead>
+                                <!--ID-->
+                                <th>TOP 1 Bán Chạy Nhất</th>                   
+                            </thead>
+                            <tbody class="productsSellerTable">                                                           
                             </tbody>
                         </table>
                     </div>
@@ -273,10 +303,115 @@
                             </tbody>
                         </table>
                     </div>
-                </div>       
+                </div>  
+                
+                <!-- sửa thông tin tài khoản  -->
+                <div class="Admin-Content-Main" id="fixingAccount">
+                    <div class="Admin-Content-Main-Title"><h1>Chỉnh sửa Thông Tin Người Dùng</h1></div>
+                    <div class="Admin-Content-Main-Content">
+                        <form id="myForm3" method="post" class="FixingForm">
+                            <div class="dataProducts">
+                                <div class="formGroup">
+                                    <label for="fullname" class="form-label">Tên đầy đủ</label>
+                                    <input type="text" name="fullname" id="fullname" placeholder="Nhập Đầy Đủ Họ Tên">
+                                    <div class="errorMessage"></div>
+                                </div><br>
+
+                                <div class="formGroup">
+                                    <label for="phone" class="form-label">Số điện thoại</label>
+                                    <input type="text" name="phone" id="phone" placeholder="Nhập Số Điện Thoại"><br>
+                                    <div class="errorMessage"></div>
+                                </div><br>
+
+                                <div class="formGroup">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="text" name="email" id="email" placeholder="Nhập Email"><br> 
+                                    <div class="errorMessage"></div>
+                                </div><br>
+
+                                <div class="formGroup">
+                                    <label for="address" class="form-label">Địa chỉ</label>
+                                    <input type="text" name="address" id="address" placeholder="Nhập Địa Chỉ"><br> 
+                                    <div class="errorMessage"></div>
+                                </div><br>
+
+                                <div class="formGroup">
+                                    <label for="password" class="form-label">Mật khẩu</label>
+                                    <input type="text" name="password" id="password" placeholder="Nhập mật khẩu"><br> 
+                                    <div class="errorMessage"></div>
+                                </div><br>
+
+                                <div class="formGroup">
+                                    <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
+                                    <input type="text" name="password_confirmation" id="password_confirmation" placeholder="Nhập lại mật khẩu"><br> 
+                                    <div class="errorMessage"></div>
+                                </div><br>
+                            </div>                          
+                            <button type="submit" class="updateAccountBtn">Cập nhật tài khoản</button>
+                        </form>                            
+                    </div>
+                </div>
+
+                <div class="Admin-Content-Main">
+                    <div class="Admin-Content-Main-Title">
+                        <h1 style="max-width: 500px;">Danh Sách Hóa Đơn</h1>
+                        <button class="returnProductPage" style="font-weight: bold; padding: 0; cursor: pointer; border-radius: 15px;"><span class="material-icons"  >arrow_back</span></button>
+                    </div>
+                    <div class="Admin-Content-Main-Content-List">
+                        <table>
+                            <thead>                             
+                                <th>ID Đơn Hàng</th>                                
+                                <th>ID Tài Khoản</th>
+                                <th>Thời Gian Hóa Đơn</th>                                
+                                <th>Chi Tiết</th>                                                                                      
+                                <th>Đánh Dấu</th>                                
+                                <th>Hủy Đơn</th>                    
+                            </thead>
+                            <tbody class="ordersDetailTable">                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+
             </div>
         </div>
     </section>
+
+
+    <div class="modal info-admin">
+        <div class="modal-container" id="modal-container">
+            <button class="form-close" onclick="closeModal()"><i class="ri-close-large-line"></i></button>
+            <div class="forms mdl-cnt">
+                <div class="form-content">
+                    <h2 class="form-title">
+                       Thông Tin Tài Khoản
+                    </h2>
+                    <div class="infoAdminContainer">
+                        <!-- <div>
+                            Họ Tên:
+                            <br>
+                            <br>
+                            Số Điện Thoại:
+                            <br>
+                            <br>
+                            Địa Chỉ:
+                            <br>
+                            <br>
+                            Email:
+                            <br>
+                            <br>
+                            Mật Khẩu:
+                            <br>
+                            <br>
+                        </div> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
     <script src="asset\js\script.js"></script>
     <script src="asset/js/initialization.js"></script>
 </body>

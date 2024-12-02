@@ -429,6 +429,7 @@ signupButton.addEventListener('click', () => {
                 status: 1,
                 join: new Date(),
                 cart: [],
+                cancellations: 0,
                 userType: 0,
                 id: accounts.length + 1
             }
@@ -816,6 +817,8 @@ document.querySelector(".checkout-btn").addEventListener("click",e =>{
             id: orders.length + 1,
             id_customer : document.querySelector(".auth-container .text-tk").getAttribute("data-id"),
             cart: thisCart,
+            status: 0,
+            start_order: new Date(),
             tongTien: total,
         }
         //console.log(order);
@@ -850,6 +853,28 @@ document.querySelector('.buyNow').addEventListener("click",e =>{
             quantity: detailQuantity,
         };
 
+        // const products = JSON.parse(localStorage.getItem("products")) || [];
+
+        const newProducts = products.map(e => {
+            if(e.id === currentProductId){
+                return {
+                    id: e.id,
+                    status: e.status,
+                    name: e.name,
+                    price: e.price,
+                    image: e.image,
+                    catagory: e.catagory,
+                    quantity: e.quantity + cartItem.quantity,
+                    TongTien: e.TongTien + (cartItem.quantity*e.price), 
+                    desc: e.desc
+                }
+            }
+            else{
+                return e;
+            }
+        });
+        localStorage.setItem("products",JSON.stringify(newProducts));
+
         // Check if the same product with the same size already exists in the cart
         const existingItem = cart.find(item => item.id === cartItem.id && item.size === cartItem.size);
         if (existingItem) {
@@ -870,6 +895,8 @@ document.querySelector('.buyNow').addEventListener("click",e =>{
             id: orders.length + 1,
             id_customer : document.querySelector(".auth-container .text-tk").getAttribute("data-id"),
             cart: cart_buy_now,
+            status:0,
+            start_order: new Date(),
             tongTien: total,
         }
         //console.log(order);

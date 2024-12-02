@@ -133,7 +133,9 @@ function createProduct() {
             "price": 2500000,
             "image":"C:\\fakepath\\5.png",
             "catagory": "Jacket",
-            "desc": "Tri ân cho nhà vô địch World 2024 - Chất liệu Polyester 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
+            "quantity": 0,
+            "TongTien":0, 
+            "desc": "Tri ân cho nhà vô địch World 2024 - Chất liệu Polyester 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất", 
         },
         {
             "id": 2,
@@ -142,6 +144,8 @@ function createProduct() {
             "price": 2350000,
             "image": "C:\\fakepath\\2.jpg",
             "catagory": "Jersey",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Tri ân cho nhà vô địch World 2024 - Áo đấu với chất liệu Polyester 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -151,6 +155,8 @@ function createProduct() {
             "price": 1800000,
             "image": "C:\\fakepath\\3.png",
             "catagory": "T-Shirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Tri ân cho nhà vô địch World 2024 - Chất liệu Cotton 72%, Polyester 28%  - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -160,6 +166,8 @@ function createProduct() {
             "price": 1100000,
             "image": "C:\\fakepath\\4.jpg",
             "catagory": "Sweatshirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Chất liệu Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -169,6 +177,8 @@ function createProduct() {
             "price": 500000,
             "image": "C:\\fakepath\\5.png",
             "catagory": "Jacket",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Áo khoác chống thấm nước - Chất liệu Polyester 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -178,6 +188,8 @@ function createProduct() {
             "price": 1000000,
             "image": "C:\\fakepath\\6.jpg",
             "catagory": "Polo",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Áo Polo gọn nhẹ - Chất liệu Cotton 72.1%, Polyester 23.6%, Elastane 4.3% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -187,6 +199,8 @@ function createProduct() {
             "price": 2500000,
             "image": "C:\\fakepath\\7.jpg",
             "catagory": "T-Shirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Chiếc áo kỷ niệm 20 năm thành lập tổ chức T1 - Chất liệu Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -196,6 +210,8 @@ function createProduct() {
             "price": 1500000,
             "image": "C:\\fakepath\\8.jpg",
             "catagory": "T-Shirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Chiếc áo kỷ niệm 20 năm thành lập tổ chức T1 - Chất liệu Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -205,6 +221,8 @@ function createProduct() {
             "price": 1000000,
             "image": "C:\\fakepath\\9.jpg",
             "catagory": "Hoodie",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Hoodie của đội tuyển T1 Valorant - Chất liệu Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -214,6 +232,8 @@ function createProduct() {
             "price": 560000,
             "image": "C:\\fakepath\\10.jpg",
             "catagory": "Sweatshirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -223,6 +243,8 @@ function createProduct() {
             "price": 550000,
             "image": "C:\\fakepath\\11.jpg",
             "catagory": "T-Shirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Áo thun khắc tên tuyển thủ Zeus - Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -232,6 +254,8 @@ function createProduct() {
             "price": 550000,
             "image": "C:\\fakepath\\12.jpg",
             "catagory": "T-Shirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Áo thun khắc tên tuyển thủ Onen - Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -241,6 +265,8 @@ function createProduct() {
             "price": 550000,
             "image": "C:\\fakepath\\13.jpg",
             "catagory": "T-Shirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Áo thun khắc tên tuyển thủ Gumuyusi - Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -250,6 +276,8 @@ function createProduct() {
             "price": 550000,
             "image": "C:\\fakepath\\14.jpg",
             "catagory": "T-Shirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Áo thun khắc tên tuyển thủ Keria - Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -259,6 +287,8 @@ function createProduct() {
             "price": 800000,
             "image": "C:\\fakepath\\15.jpg",
             "catagory": "T-Shirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -268,6 +298,8 @@ function createProduct() {
             "price": 750000,
             "image": "C:\\fakepath\\16.jpg",
             "catagory": "T-Shirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Phiên bản cho giải đấu MSI Thành Đô 2024- Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -277,6 +309,8 @@ function createProduct() {
             "price": 450000,
             "image": "C:\\fakepath\\17.jpg",
             "catagory": "Hoodie",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -286,6 +320,8 @@ function createProduct() {
             "price": 600000,
             "image": "C:\\fakepath\\18.jpg",
             "catagory": "Sweatshirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Áo len khắc tên tuyển thủ Zeus - Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -295,6 +331,8 @@ function createProduct() {
             "price": 600000,
             "image": "C:\\fakepath\\19.jpg",
             "catagory": "Sweatshirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Áo len khắc tên tuyển thủ Oner - Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -304,6 +342,8 @@ function createProduct() {
             "price": 600000,
             "image": "C:\\fakepath\\20.jpg",
             "catagory": "Sweatshirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Áo len khắc tên tuyển thủ Faker - Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -313,6 +353,8 @@ function createProduct() {
             "price": 600000,
             "image": "C:\\fakepath\\21.jpg",
             "catagory": "Sweatshirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Áo len khắc tên tuyển thủ Gumayusi - Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -322,6 +364,8 @@ function createProduct() {
             "price": 600000,
             "image": "C:\\fakepath\\22.jpg",
             "catagory": "Sweatshirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Áo len khắc tên tuyển thủ Gumayusi - Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -331,6 +375,8 @@ function createProduct() {
             "price": 575000,
             "image": "C:\\fakepath\\23.jpg",
             "catagory": "Jacket",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Chất liệu Polyester 100% - Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -340,6 +386,8 @@ function createProduct() {
             "price": 800000,
             "image": "C:\\fakepath\\24.jpg",
             "catagory": "Sweatshirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Tri ân cho nhà vô địch World 2023 - Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -349,6 +397,8 @@ function createProduct() {
             "price": 560000,
             "image": "C:\\fakepath\\25.jpg",
             "catagory": "Hoodie",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Hoodie khắc tên tuyển thủ Faker - Được làm từ Cotton 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -358,6 +408,8 @@ function createProduct() {
             "price": 440000,
             "image": "C:\\fakepath\\26.jpg",
             "catagory": "Jacket",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Chất liệu 70% Cotton, 30% Polyester - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -367,6 +419,8 @@ function createProduct() {
             "price": 500000,
             "image": "C:\\fakepath\\27.jpg",
             "catagory": "T-Shirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Chất liệu 100% Cotton - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -376,6 +430,8 @@ function createProduct() {
             "price": 2000000,
             "image": "C:\\fakepath\\28.jpg",
             "catagory": "Jersey",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Áo đấu chính thức của T1 2024 - Chất liệu 100% Polyester - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -385,6 +441,8 @@ function createProduct() {
             "price": 600000,
             "image": "C:\\fakepath\\29.jpg",
             "catagory": "T-Shirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Chất liệu 100% Cotton - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -394,6 +452,8 @@ function createProduct() {
             "price": 750000,
             "image": "C:\\fakepath\\30.jpg",
             "catagory": "Polo",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Chất liệu 100% Cotton - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -403,6 +463,8 @@ function createProduct() {
             "price": 700000,
             "image": "C:\\fakepath\\31.jpg",
             "catagory": "T-Shirt",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Collab với thương hiệu VANDYTHEPINK - Chất liệu 100% Cotton - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -412,6 +474,8 @@ function createProduct() {
             "price": 400000,
             "image": "C:\\fakepath\\32.png",
             "catagory": "Accessory",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Nón tri ân khoảnh khắc vô địch Wolrd 2024 - Chất liệu 100% Cotton - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
 
@@ -422,6 +486,8 @@ function createProduct() {
             "price": 200000,
             "image": "C:\\fakepath\\33.jpg",
             "catagory": "Accessory",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Chất liệu CORDURA Ni-lông - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -431,6 +497,8 @@ function createProduct() {
             "price": 700000,
             "image": "C:\\fakepath\\34.jpg",
             "catagory": "Hoodie",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Collab với thương hiệu VANDYTHEPINK - Chất liệu 100% Cotton - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -440,6 +508,8 @@ function createProduct() {
             "price": 700000,
             "image": "C:\\fakepath\\35.jpg",
             "catagory": "Jacket",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Collab với thương hiệu VANDYTHEPINK - Chất liệu 100% Cotton - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -449,6 +519,8 @@ function createProduct() {
             "price": 200000,
             "image": "C:\\fakepath\\36.jpg",
             "catagory": "Accessory",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Chất liệu Acrylic 100% - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -458,6 +530,8 @@ function createProduct() {
             "price": 100000,
             "image": "C:\\fakepath\\37.jpg",
             "catagory": "Accessory",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Túi Tote bảo vệ môi trường với các Mongi siêu đáng yêu - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -467,6 +541,8 @@ function createProduct() {
             "price": 200000,
             "image": "C:\\fakepath\\38.jpg",
             "catagory": "Accessory",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Chất liệu 100%  Cotton - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -476,6 +552,8 @@ function createProduct() {
             "price": 100000,
             "image": "C:\\fakepath\\39.jpg",
             "catagory": "Accessory",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Chất liệu 100% Cao su - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         {
@@ -485,6 +563,8 @@ function createProduct() {
             "price": 250000,
             "image": "C:\\fakepath\\40.jpg",
             "catagory": "Accessory",
+            "quantity": 0,
+            "TongTien":0, 
             "desc": "Collab với thương hiệu VANDYTHEPINK - Chất liệu 60% Cao su, 40% Polyester - Thời gian đảm bảo chất lượng sản phẩm hơn 1 năm kể từ ngày sản xuất"
         },
         ]
@@ -506,6 +586,7 @@ function createAdminAccount() {
             status: 1,
             join: new Date(),
             cart: [],
+            cancellations: 0,
             userType: 1,
             id: 1
         })

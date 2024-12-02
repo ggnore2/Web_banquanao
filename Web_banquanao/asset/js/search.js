@@ -605,6 +605,7 @@ function filterProducts(category) {
 // Hiển thị danh sách sản phẩm
 function renderProducts(productList) {
   const listProductHTML = document.querySelector(".listProduct");
+
   listProductHTML.innerHTML = ""; // Xóa nội dung cũ
   productList.forEach((product) => {
     const productHTML = `
@@ -934,3 +935,152 @@ document.querySelector(".buyNow").addEventListener("click", (e) => {
   }
 });
 window.onload = checkAdmin();
+
+let categories = [
+  "Áo Khoác",
+  "Áo Đấu",
+  "Áo Thun",
+  "Áo Len",
+  "Áo Polo",
+  "Hoodie",
+  "Phụ Kiện",
+];
+
+// Thêm vào select các phạm trù
+let advancedSearchForm = document.querySelector(".advanced-search-form");
+categories.forEach((category) => {
+  let option = document.createElement("option");
+  option.innerText = category;
+  option.style.fontSize = "20px";
+  advancedSearchForm["product-category"].insertAdjacentElement(
+    "beforeend",
+    option
+  );
+});
+
+let advancedSearchFormSubmitButton = advancedSearchForm.querySelector("button");
+
+// Tạo error
+function getErrorElement(message) {
+  let error = document.createElement("div");
+  error.innerText = message;
+  error.style.color = "red";
+  error.classList.add("error");
+  return error;
+}
+
+// Dịch phạm trù trong tiếng việt sang tiếng anh
+function translateCategory(categoryInVietnamese) {
+  if (categoryInVietnamese == "Áo Khoác") {
+    return "Jacket";
+  }
+
+  if (categoryInVietnamese == "Áo Đấu") {
+    return "Jersey";
+  }
+
+  if (categoryInVietnamese == "Áo Thun") {
+    return "T-Shirt";
+  }
+
+  if (categoryInVietnamese == "Áo Len") {
+    return "Sweatshirt";
+  }
+
+  if (categoryInVietnamese == "Áo Polo") {
+    return "Polo";
+  }
+
+  if (categoryInVietnamese == "Hoodie") {
+    return "Hoodie";
+  }
+
+  if (categoryInVietnamese == "Phụ Kiện") {
+    return "Accessory";
+  }
+}
+
+// Submit form tìm kiếm nâng cao
+advancedSearchFormSubmitButton.onclick = function (e) {
+  e.preventDefault();
+  let form = advancedSearchFormSubmitButton.closest("form");
+  document.querySelectorAll(".error").forEach((e) => e.remove());
+  let shouldStop = false;
+  let productName = form["product-name"].value;
+  let productCategory = form["product-category"].value;
+  let productLowestPrice = form["product-lowest-price"].value;
+  let productHighestPrice = form["product-highest-price"].value;
+
+  if (productName === "") {
+    let error = getErrorElement("Trường tên không được để trống");
+    form["product-name"].insertAdjacentElement("afterend", error);
+    shouldStop = true;
+  }
+
+  if (productLowestPrice === "") {
+    let error = getErrorElement("Trường giá thấp nhất không được để trống");
+    form["product-lowest-price"].insertAdjacentElement("afterend", error);
+    shouldStop = true;
+  } else if (!/^\d+$/.test(productLowestPrice)) {
+    let error = getErrorElement("Trường giá thấp nhất phải là số thực dương");
+    form["product-lowest-price"].insertAdjacentElement("afterend", error);
+    shouldStop = true;
+  }
+
+  if (productHighestPrice === "") {
+    let error = getErrorElement("Trường giá cao nhất không được để trống");
+    form["product-highest-price"].insertAdjacentElement("afterend", error);
+    shouldStop = true;
+  } else if (!/^\d+$/.test(productHighestPrice)) {
+    let error = getErrorElement("Trường giá cao nhất phải là số thực dương");
+    form["product-highest-price"].insertAdjacentElement("afterend", error);
+    shouldStop = true;
+  }
+
+  if (parseFloat(productHighestPrice) < parseFloat(productLowestPrice)) {
+    let error = getErrorElement("Giá cao nhất thấp hơn giá thấp nhất");
+    form["product-highest-price"].insertAdjacentElement("afterend", error);
+    shouldStop = true;
+  }
+  if (shouldStop) {
+    return false;
+  }
+  productLowestPrice = parseFloat(productLowestPrice);
+  productHighestPrice = parseFloat(productHighestPrice);
+  productCategory = translateCategory(productCategory);
+
+  filterProducts(
+    productName,
+    productCategory,
+    productLowestPrice,
+    productHighestPrice
+  );
+};
+
+// Lọc sản phẩm theo danh mục
+function filterProducts(name, category, lowestPrice, highestPrice) {
+  const filteredProducts = products.filter(
+    (product) =>
+      product.catagory === category &&
+      product.name.toLowerCase().includes(name) &&
+      lowestPrice < product.price &&
+      product.price < highestPrice
+  );
+  const listProductHTML = document.querySelector(".listProduct");
+  const paginationContainer = document.querySelector(".pagination-controls");
+
+  if (filteredProducts.length === 0) {
+    // Hiển thị thông báo không tìm thấy sản phẩm
+    document.getElementById("tieude").style.display = "block";
+    listProductHTML.innerHTML = `<div class="no-result"><div class="no-result-h">Tìm kiếm không có kết quả</div><div class="no-result-p">Xin lỗi, chúng tôi không thể tìm được kết quả hợp với tìm kiếm của bạn</div><div class="no-result-i"><i class="fa-solid fa-face-sad-cry"></i></div></div>`;
+    paginationContainer.classList.add("hidden"); // Ẩn nút phân trang
+  } else {
+    // Hiển thị danh sách sản phẩm
+    renderProducts(filteredProducts);
+    paginationContainer.classList.add("hidden"); // Ẩn nút phân trang
+  }
+
+  // Ẩn menu sau khi chọn
+  const categoryMenu = document.getElementById("category-menu");
+  categoryMenu.classList.remove("show");
+}

@@ -804,14 +804,24 @@ document.addEventListener('DOMContentLoaded', initApp);
 
 document.querySelector(".checkout-btn").addEventListener("click",e =>{
     if(document.querySelector(".auth-container .text-tk").getAttribute("data-id") != null){
-        window.location.href='thantoan.html';
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
         const thisCart = cart;
+        const products = JSON.parse(localStorage.getItem("products"))||[];
+        
+        products.forEach(product => {
+            const cartItem = cart.find(item => item.id === product.id);
+            if(cartItem){
+                product.quantity += cartItem.quantity;
+                product.TongTien += cartItem.quantity*product.price;
+            };
+        });
+        localStorage.setItem("products",JSON.stringify(products));
+
         let total = 0;
         cart.forEach(item => {
             itemTotal = item.price * item.quantity;
             total += itemTotal;
-        })
+        });
         let orders = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders')) : []; 
         let order ={
             id: orders.length + 1,
@@ -824,7 +834,9 @@ document.querySelector(".checkout-btn").addEventListener("click",e =>{
         //console.log(order);
         orders.push(order);
         localStorage.setItem("orders",JSON.stringify(orders));
-    }else{
+        // window.location.href='thantoan.html';
+    }
+    else{
         showToast("Hãy Đăng Nhập Tài Khoản Để Mua Sản Phẩm");
     }   
 });
@@ -844,7 +856,7 @@ document.querySelector('.buyNow').addEventListener("click",e =>{
         }
 
         const product = products.find(item => item.id === currentProductId);
-
+        console.log(product);
         if (!product) return;
 
         const cartItem = {

@@ -578,10 +578,10 @@ function createAdminAccount() {
     if (!accounts) {
         accounts = [];
         accounts.push({
-            fullname: "VinhThai",
+            fullname: "Admin",
             phone: "0912345678",
             password: "123456",
-            address: 'https://github.com/hgbaodev',
+            address: 'nowhere123',
             email: 'lychibao200t@gmail.com',
             status: 1,
             join: new Date(),

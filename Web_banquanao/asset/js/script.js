@@ -346,7 +346,9 @@ function showOrderfromLocal() {
             htmlResult = htmlResult + `<tr>                                   
             <td>${element.id}</td>                                    
             <td>${element.id_customer}</td>  
-            <td>${element.start_order}</td>                                    
+            <td>${element.start_order}</td>
+            <td>${element.full_Detail_Address}</td>   
+            <td>${element.payment_method}</td>                                    
             <td>
                 <button data-id="${element.id}" class="Details">Xem</button>
             </td>                                                                                                            
@@ -362,7 +364,9 @@ function showOrderfromLocal() {
             htmlResult = htmlResult + `<tr>                                   
             <td>${element.id}</td>                                    
             <td>${element.id_customer}</td> 
-            <td>${element.start_order}</td>                                     
+            <td>${element.start_order}</td>  
+            <td>${element.full_Detail_Address}</td>   
+            <td>${element.payment_method}</td>                                     
             <td>
                 <button data-id="${element.id}" class="Details">Xem</button>
             </td>                                                                                                            
@@ -378,7 +382,9 @@ function showOrderfromLocal() {
             htmlResult = htmlResult + `<tr>                                   
             <td>${element.id}</td>                                    
             <td>${element.id_customer}</td> 
-            <td>${element.start_order}</td>                                     
+            <td>${element.start_order}</td>   
+            <td>${element.full_Detail_Address}</td>   
+            <td>${element.payment_method}</td>                                    
             <td>
                 <button data-id="${element.id}" class="Details">Xem</button>
             </td>                                                                                                            
@@ -394,7 +400,9 @@ function showOrderfromLocal() {
             htmlResult = htmlResult + `<tr>                                   
             <td>${element.id}</td>                                    
             <td>${element.id_customer}</td> 
-            <td>${element.start_order}</td>                                   
+            <td>${element.start_order}</td>   
+            <td>${element.full_Detail_Address}</td>   
+            <td>${element.payment_method}</td>                                  
             <td>
                 <button data-id="${element.id}" class="Details">Xem</button>
             </td>                                                                                                            
@@ -505,19 +513,35 @@ function handleProcessDetailData(event){
     else if(clicked.classList.contains("nonConfirmOrder")){
         const idConfirmOrder = clicked.getAttribute("data-id");
         const confirmedOrder  = orders.map(element =>{
-            if(element.id == idConfirmOrder){     
-                return {
+            if(element.id == idConfirmOrder){   
+                if(element.status === 0) {
+                return {           
                     id: element.id,
                     id_customer : element.id_customer,
                     cart: element.cart,
-                    tongTien: element.tongTien,
                     status: 1,
                     start_order: element.start_order,
-                };
-            }
-            else{
-                return element;
-            }
+                    tongTien: element.tongTien,
+                    full_Detail_Address: element.full_Detail_Address,
+                    payment_method: element.payment_method
+                    };
+                }
+                else{
+                     return {
+                        id: element.id,
+                        id_customer : element.id_customer,
+                        cart: element.cart,
+                        status: 0,
+                        start_order: element.start_order,
+                        tongTien: element.tongTien,
+                        full_Detail_Address: element.full_Detail_Address,
+                        payment_method: element.payment_method
+                        };
+                    }
+                }
+                else{
+                    return element;
+                }
         });
         localStorage.setItem("orders",JSON.stringify(confirmedOrder));
         showOrderfromLocal();
@@ -783,7 +807,9 @@ function handleProcessData(event){
                 htmlResult = htmlResult + `<tr>                                   
                 <td>${element.id}</td>                                    
                 <td>${element.id_customer}</td>  
-                <td>${element.start_order}</td>                                    
+                <td>${element.start_order}</td>  
+                <td>${element.full_Detail_Address}</td>   
+                <td>${element.payment_method}</td>                                    
                 <td>
                     <button data-id="${element.id}" class="Details">Xem</button>
                 </td>                                                                                                            
@@ -799,7 +825,9 @@ function handleProcessData(event){
                 htmlResult = htmlResult + `<tr>                                   
                 <td>${element.id}</td>                                    
                 <td>${element.id_customer}</td> 
-                <td>${element.start_order}</td>                                     
+                <td>${element.start_order}</td> 
+                <td>${element.full_Detail_Address}</td>   
+            <td>${element.payment_method}</td>                                      
                 <td>
                     <button data-id="${element.id}" class="Details">Xem</button>
                 </td>                                                                                                            
@@ -815,7 +843,9 @@ function handleProcessData(event){
                 htmlResult = htmlResult + `<tr>                                   
                 <td>${element.id}</td>                                    
                 <td>${element.id_customer}</td> 
-                <td>${element.start_order}</td>                                     
+                <td>${element.start_order}</td>   
+                <td>${element.full_Detail_Address}</td>   
+            <td>${element.payment_method}</td>                                    
                 <td>
                     <button data-id="${element.id}" class="Details">Xem</button>
                 </td>                                                                                                            
@@ -831,7 +861,9 @@ function handleProcessData(event){
                 htmlResult = htmlResult + `<tr>                                   
                 <td>${element.id}</td>                                    
                 <td>${element.id_customer}</td> 
-                <td>${element.start_order}</td>                                   
+                <td>${element.start_order}</td>     
+                <td>${element.full_Detail_Address}</td>   
+            <td>${element.payment_method}</td>                                
                 <td>
                     <button data-id="${element.id}" class="Details">Xem</button>
                 </td>                                                                                                            

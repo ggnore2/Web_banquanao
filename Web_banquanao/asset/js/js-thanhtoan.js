@@ -57,13 +57,8 @@ function applyVoucher() {
         alert('Vui lòng nhập mã voucher.');
     }
 }
-document.querySelector(".btn-payment").addEventListener("click", element=>{
-    element.preventDefault();
-    window.location.href="index.html";
-});
-
-document.querySelector(".material-icons").addEventListener("click", e => {
-    window.location.href="index.html";
+document.querySelector(".return").addEventListener("click", e => {
+  window.location.href="index.html";
 });
 //lỗi thông tin trống trang thanh toán
 function submitPayment(event) {
@@ -73,7 +68,9 @@ function submitPayment(event) {
     let success = true;
     inputs.forEach(input => {
         const inputValue = input.value;
-        const errorMessageDiv = input.nextElementSibling; 
+        const errorMessageDiv = input.nextElementSibling;
+        console.log(errorMessageDiv);
+        // const  errorMessageDiv = document.querySelectorAll("");
         if (inputValue === "") {
             if (!errorMessageDiv) {
                 const errorDiv = document.createElement('div');
@@ -109,7 +106,55 @@ function submitPayment(event) {
         }
     }
     if (success) {
-        window.location.href = "index.html";
+      const paymentMethod = document.getElementById('pttt');
+      const method = paymentMethod.value;
+      const addressDetail = document.getElementById("address").value;
+      const City = document.getElementById("city").value;
+      const District = document.getElementById("district").value;
+      const Ward = document.getElementById("ward").value;
+      axios.get('https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json')
+  .then(function(response){
+      const data = response.data;
+      const city = data.find(city => city.Id === City);
+      const district = city.Districts.find(district => district.Id === District);
+      const ward = district.Wards.find(ward => ward.Id === Ward);
+      const fullDetailAddress = addressDetail +","+ ward.Name+","+ district.Name +","+ city.Name;
+      const orders = JSON.parse(localStorage.getItem("orders"))||[];
+      const updateOrders = orders.map(element => {
+        if(element.id === orders[orders.length - 1].id){
+          return {
+            id: element.id,
+            id_customer : element.id_customer,
+            cart: element.cart,
+            status: element.status,
+            start_order: element.start_order,
+            tongTien: element.tongTien,
+            full_Detail_Address: fullDetailAddress,
+            payment_method: method
+          }
+        }
+        else{
+          return element;
+        }
+      });
+      localStorage.setItem("orders",JSON.stringify(updateOrders));
+    })
+      if (method === 'cash') {
+        window.alert('Bạn đã chọn thanh toán bằng tiền mặt.');
+        window.location.href ="index.html";
+      } else {
+        const cardNumber = document.getElementById('card-number').value;
+        const cardName = document.getElementById('card-name').value;
+        const expiryDate = document.getElementById('expiry-date').value;
+        const cvv = document.getElementById('cvv').value;
+
+        if (cardNumber!=='' && cardName!=='' && expiryDate!=='' && cvv!=='') {
+          window.alert('Thanh toán bằng ATM thành công!');
+          window.location.href="index.html";
+        } else {
+          window.alert('Vui lòng nhập đầy đủ thông tin thẻ.');
+        }
+      }
     }
 }
 const mainBtn = document.querySelector(".btn-payment");
@@ -147,26 +192,6 @@ function initializePayment() {
     });
   }
 
-  function submitPayment() {
-    const paymentMethod = document.getElementById('pttt');
-    const method = paymentMethod.value;
-    if (method === 'cash') {
-      alert('Bạn đã chọn thanh toán bằng tiền mặt.');
-      window.location.href = "index.html";
-    } else {
-      const cardNumber = document.getElementById('card-number').value;
-      const cardName = document.getElementById('card-name').value;
-      const expiryDate = document.getElementById('expiry-date').value;
-      const cvv = document.getElementById('cvv').value;
-
-      if (cardNumber!=='' && cardName!=='' && expiryDate!=='' && cvv!=='') {
-        alert('Thanh toán bằng ATM thành công!');
-        window.location.href = "index.html";
-      } else {
-        alert('Vui lòng nhập đầy đủ thông tin thẻ.');
-      }
-    }
-  }
 
   // Khởi chạy hàm khi tải trang
-  window.onload = initializePayment;
+  window.onload = initializePayment();

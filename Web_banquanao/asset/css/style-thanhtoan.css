@@ -57,7 +57,6 @@ li{
     margin-top:20px;
     width:60%;
     height: 1100px;
-
 }
 .address-title{
     text-align: left;
@@ -67,8 +66,9 @@ li{
     margin-left: 20px;
 }
 .address div {
-    display: flex;
-    align-items: center; 
+    /* display: flex;
+    align-items: center;  */
+    text-align: center;
     margin-bottom: 10px;
     margin-left:50px;
 }
@@ -353,8 +353,8 @@ li{
 }
 .errorMessage {
     color: red;
-    font-size: 16px;
-    position: relative;
+    font-size: 1.3rem;
+    /* position: absolute; */
     
 }
 /* ************ */

@@ -70,7 +70,6 @@ function submitPayment(event) {
         const inputValue = input.value;
         const errorMessageDiv = input.nextElementSibling;
         console.log(errorMessageDiv);
-        // const  errorMessageDiv = document.querySelectorAll("");
         if (inputValue === "") {
             if (!errorMessageDiv) {
                 const errorDiv = document.createElement('div');

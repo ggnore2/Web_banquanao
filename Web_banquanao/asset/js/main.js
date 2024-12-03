@@ -834,7 +834,7 @@ document.querySelector(".checkout-btn").addEventListener("click",e =>{
         //console.log(order);
         orders.push(order);
         localStorage.setItem("orders",JSON.stringify(orders));
-        // window.location.href='thantoan.html';
+        window.location.href='thantoan.html';
     }
     else{
         showToast("Hãy Đăng Nhập Tài Khoản Để Mua Sản Phẩm");

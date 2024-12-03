@@ -2,7 +2,7 @@ function checkLogin() {
     let currentUser = JSON.parse(localStorage.getItem("currentuser"));
     if(currentUser == null || currentUser.userType == 0) {
         document.querySelector("body").innerHTML = `<div class="access-denied-section">
-            <img class="access-denied-img" src="asset/image/40.jpg" alt="">
+            <img class="access-denied-img" src="asset/image/screenshot-2024-11-28-220303-1732868068648-17328680695361692082549.webp" alt="">
         </div>`
     }
 }

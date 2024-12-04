@@ -1646,4 +1646,31 @@ label a {
     /* Chỉ hiển thị phần được chọn */
 }
 
+/*------------------------------Advanced-search----------------------------------*/
+.advanced-search-form-container {
+    margin-top: 40px;
+    border: 1px solid rgb(37, 150, 190);
+    border-radius: 5px;
+    padding: 20px;
+    padding-bottom: 0px;
+}
 
+.advanced-search-form input,
+.advanced-search-form select {
+    font-size: 15px;
+}
+
+.advanced-search-button {
+    background-color: white;
+    border: 1px solid black;
+    font-size: 15px;
+    margin: 15px;
+    padding: 5px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.advanced-search-button:hover {
+    background-color: rgb(37, 150, 190);
+    color: white;
+}

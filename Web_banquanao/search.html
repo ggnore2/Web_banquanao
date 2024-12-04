@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="asset/css/home-responsive.css">
     <link rel="icon" type="image/x-icon" href="./image/favicon.svg">
     <script src="https://kit.fontawesome.com/05c782a462.js" crossorigin="anonymous"></script>
-    
+
 </head>
 
 <body>
@@ -22,12 +22,12 @@
                     </div>
                 </div>
                 <div class="header-middle-center">
-                    <form action="" class="form-search">
+                    <!-- <form action="" class="form-search">
                         <span class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></span>
                         <input type="text" class="form-search-input" placeholder="Tìm kiếm..."
                             oninput="searchProducts()">
 
-                    </form>
+                    </form> -->
                 </div>
                 <div class="header-middle-right">
                     <ul class="header-middle-right-list">
@@ -70,7 +70,7 @@
         <div class="container3">
             <ul class="menu-list">
                 <li class="menu-list-item"><a href="./index.html" class="menu-link" onclick="showSection('home')">Trang chủ</a></li>
-                <li class="menu-list-item"><a href="./search.html" class="menu-link" onclick="showSection('home')">Tìm kiếm</a></li>
+                <li class="menu-list-item"><a href="./search.html" class="menu-link">Tìm kiếm</a></li>
                 <li class="menu-list-item"><a href="javascript:;" class="menu-link" onclick="toggleMenu()">Sản phẩm</a>
                 </li>
                 <li class="menu-list-item"><a href="javascript:;" class="menu-link">Tin Tức</a></li>
@@ -108,42 +108,47 @@
     </nav>
     <!-------------------------------Main----------------------------------->
     <main>
-
         <section id="home" class="content-section hidden">
-            <div id="slideshow-wrapper">
-                <div class="slideshow-container">
-                    <div class="slide fade">
-                        <img src="asset/image/Slideshow/1.jpg" alt="Image 1">
-                    </div>
-                    <div class="slide fade">
-                        <img src="asset/image/Slideshow/2.jpg" alt="Image 2">
-                    </div>
-                    <div class="slide fade">
-                        <img src="asset/image/Slideshow/3.jpg" alt="Image 3">
-                    </div>
-                    <div class="slide fade">
-                        <img src="asset/image/Slideshow/4.jpg" alt="Image 4">
-                    </div>
-                    <div class="slide fade">
-                        <img src="asset/image/Slideshow/5.jpg" alt="Image 5">
-                    </div>
 
-                    <!-- Navigation buttons -->
-                    <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
-                    <a class="next" onclick="changeSlide(1)">&#10095;</a>
-                </div>
-
-                <!-- Dots for navigation -->
-                <div class="dot-container">
-                    <span class="dot" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                    <span class="dot" onclick="currentSlide(3)"></span>
-                    <span class="dot" onclick="currentSlide(4)"></span>
-                    <span class="dot" onclick="currentSlide(5)"></span>
-                </div>
-            </div>
 
             <div class="container1">
+                <div class="advanced-search-form-container">
+                    <h1>
+                        Tìm kiếm
+                    </h1>
+                    <br>
+                    <form class="advanced-search-form">
+                        <div style = "display:flex; justify-content: space-evenly;">
+                            <div>
+                                <label for="product-name">Tên sản phẩm: </label><br>
+                                <input name="product-name" type="text" />
+                            </div>
+                            <div>
+                                <label for="product-category">Loại sản phẩm: </label><br>
+                                <select name="product-category">
+                                </select>
+                            </div>
+                            <div>
+                                <div>
+                                    <label for="product-lowest-price">Giá thấp nhất: </label><br>
+                                    <input name="product-lowest-price" type="text" placeholder="VND"/>
+                                </div>
+                                <div>
+                                    <label for="product-highest-price">Giá cao nhất: </label><br>
+                                    <input name="product-highest-price" type="text" placeholder="VND" />
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div>
+                            <button class="advanced-search-button">
+                                TÌM KIẾM
+                            </button>
+                        </div>
+
+                        
+                    </form>
+                </div>
                 <div class="tieude" id="tieude">
                     <h2>Sản phẩm</h2>
                 </div>
@@ -151,25 +156,6 @@
                 <div class="pagination-controls"></div>
             </div>
         </section>
-
-
-        
-        
-        
-
-        <section id="products" class="content-section">
-            <div class="container1">
-                <div class="tieude" id="tieude">
-                    <h2>Sản phẩm</h2>
-                </div>
-                <div class="listProduct"></div>
-                <div class="pagination-controls"></div>
-            </div>
-        </section>
-
-
-
-
     </main>
 
 
@@ -247,7 +233,7 @@
 
                     <div class="product-detail-buttons">
                         <button onclick="addToCartFromDetail()">Thêm vào giỏ hàng</button>
-                        <button  class="buyNow">Mua ngay</button>
+                        <button class="buyNow">Mua ngay</button>
                     </div>
                 </div>
             </div>
@@ -438,7 +424,7 @@
 
 
     <div id="toast-container"></div>
-    <script src="asset/js/main.js"></script>
+    <script src="asset/js/search.js"></script>
     <script src="asset/js/initialization.js"></script>
     <script src="asset/js/message.js"></script>
 </body>
